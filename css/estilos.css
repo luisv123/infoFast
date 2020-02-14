@@ -1,0 +1,395 @@
+
+.blue {
+    background: transparent;
+    color: #636b6f;
+    border: 1px solid #636b6f;
+    
+}
+.navbar-toggler{
+    color: white !important;
+}
+.buscar{
+    border-radius: 10px !important;
+    background-image: url("buscar.png");
+    background-repeat: no-repeat;
+    padding-left: 39px;
+    height: 47px;
+
+}
+.tre {
+    -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    width: 100%;
+    background: blue;
+}
+.tre:hover {
+    width: 100%;
+    background: #090094;
+
+}
+
+.blue {
+    padding: none;
+    margin: 50px;
+}
+#nav-solicitud li{
+    list-style: none;
+}
+
+
+#nav-solicitud li a{
+     color: #2c3e50;
+}
+
+#nav-solicitud li a:hover{
+    background: #2c3e50;
+    color: #fff;
+}
+.subir:hover {
+    cursor: pointer;
+}
+.ul2 {
+    list-style-type: none;
+      margin: 0;
+      padding: 0;
+      position: fixed; /* Make it stick, even on scroll */
+      overflow: auto;
+      background: transparent;
+      width: 259.25px;
+      box-shadow: 0 4px 8px 0 transparent, 0 6px 20px 0 transparent;
+      font-size: 30px;
+}
+.asdf button {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin: 0;
+}
+.asdf button:focus {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin: 0;
+      border:none;
+}
+.asdfs button {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      margin: 0;
+      float: right !important;
+}
+.ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.asdf {
+    float: left;
+}
+
+li button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border:none;
+    background: transparent;
+
+}
+
+li button.active {
+    color: white;
+    background-color: #4CAF50;
+}
+h4 {
+
+	font-style: oblique;
+}
+.button {
+      background: transparent;
+      border:1px solid #636b6f;
+      color: #636b6f;
+}
+.button {
+      background: transparent;
+      border:1px solid #636b6f;
+      color: #636b6f;
+}
+.button:focus {
+      background: transparent;
+      border:1px solid #636b6f;;
+      color: #636b6f;
+}
+
+body {
+    background-image: url("../papyrus2.gif") !important;
+}
+.white {
+    width: 100%;
+    background: white;
+    padding: none;
+    border-radius: 10px;
+    
+    margin-bottom: 20px;
+    border: 1px solid white; 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.white video {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 2%;
+    background: black;
+}
+.white button {
+    
+    color:#fff;
+}
+
+.icon {
+    border-radius: 500px;
+    width: 48px;
+    height: 48px;
+
+}
+.icon_big {
+    border-radius: 500px;
+    width: 80%;
+    height: 230px;
+    min-height: 60px;
+    background-size: 100%; 
+    background-repeat: no-repeat;
+}
+
+.table_hover tr {
+-webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    background: blue;
+    color: #fff;
+    color:#fff
+ 
+}
+.table_hover button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    color: white;
+    font-size: 30px;
+    margin:none !important;
+}
+.table_hover button:hover {
+    color: blue;
+}
+.table_hover tr:hover {
+
+    background: #fff;
+    color: blue;
+}
+
+
+
+@keyframes more {
+    0% {color: white}
+    50% {color: transparent;}
+    100% {color:white;}
+}
+.more {
+    animation-name: more;
+    animation-duration: 0.5s;
+    color: white;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltips:hover .tooltiptexts {
+      visibility: visible;
+}
+.card-body {
+    background: white;
+    color: #5ab7ff;
+}
+.card-header {
+    background: white;
+    border-bottom:1px solid lightgray;
+}
+.card-footer {
+    background: white;
+    border-top: 1px solid lightgray;
+}
+.card-footer button {
+    color: #fff;
+}
+.card-footer button:hover {
+    color: #fff;
+}
+.card-body video {
+    border-radius: 15px 15px 15px 15px !important;
+}
+.card-body img {
+    border-radius: 15px 15px 15px 15px !important;
+    width: 100%;
+}
+.card{
+    border: none;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 10%;
+}
+.disabled:hover {
+    cursor: not-allowed;
+    border:none !important;
+}
+.navbar .disabled:hover {
+    cursor: not-allowed;
+
+}
+.navbar .disabled:focus {
+    border:none !important;
+}
+.hover_button:hover {
+    cursor: pointer;
+}
+
+.navbar ul li .nav-item {
+    color: #636b6f;
+}
+.navbar ul li .nav-item:hover {
+    color: black;
+     
+}
+.navbar-collapse {
+    margin: none !important; 
+    padding: none !important; 
+}
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    
+    min-height: 55px;/* For browsers that do not support gradients */
+
+    background: transparent; /* For browser that do not support gradients */
+   
+}
+.ex {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 20px
+}
+.hover-btn:hover{
+    cursor: pointer;
+}
+.form-control{
+    background: white !important;
+}
+.button{
+    border: 1px solid white !important;
+}
+.navbar ul li button i {
+       
+      transform: matrix(1, -0.3, 0, 1, 0, 0) !important;
+}
+.infouser{
+    margin-top: 90px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 5px !important;
+    margin-left: 66%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.infouser::after{
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: 42%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #e9ecef transparent;
+}
+.navbar ul li .no-leido{
+    position: absolute;
+    top: 6px;
+    background: red;
+    font-size: 11px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 4px;
+    padding: 0px 4px;
+    color: #fff;
+}
+.bf{
+    border-radius: 1000px;
+    border: 1px solid #5abdff;
+    color: #5abdff !important;
+}
+html, body {
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > button {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+            .button{
+                background: transparent;
+                color: #636b6f;
+                border: 1px solid #636b6f;
+            }
+
+            .button:hover {
+                background: transparent;
+                color: #636b6f;
+                border: 1px solid #636b6f;
+            }
