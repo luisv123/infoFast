@@ -1,0 +1,64 @@
+DROP DATABASE blog;
+CREATE DATABASE blog;
+USE blog;
+CREATE TABLE usuarios(
+	id INT AUTO_INCREMENT NOT NULL,
+	nombre VARCHAR(20),
+	apellido VARCHAR(20),
+	mail VARCHAR(50),
+	password VARCHAR(200),
+	infofast VARCHAR(50),
+	color VARCHAR(7),
+	dn VARCHAR(2),
+	mn VARCHAR(10),
+	an VARCHAR(4),
+	sexo VARCHAR(10),
+	foto_perfil VARCHAR(100),
+	fecha_registro VARCHAR(20),
+	hora_registro VARCHAR(10),
+	PRIMARY KEY(id)
+);
+CREATE TABLE post(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	contenido VARCHAR(100),
+	adj VARCHAR(245),
+	PRIMARY KEY(id)
+);
+CREATE TABLE mg(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	post_id INT NOT NULL,
+	PRIMARY KEY(id)
+);
+CREATE TABLE nmg(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	post_id INT NOT NULL,
+	PRIMARY KEY(id)
+);
+CREATE TABLE comentarios(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	comentarios VARCHAR(155),
+	post_id INT NOT NULL,
+	PRIMARY KEY(id)
+);
+CREATE TABLE videos(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	url TEXT NOT NULL,
+	PRIMARY KEY(id)
+);
+CREATE TABLE imagenes(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	url TEXT NOT NULL,
+	PRIMARY KEY(id)
+);
+CREATE TABLE gifs(
+	id INT AUTO_INCREMENT NOT NULL,
+	autor_id INT NOT NULL,
+	url TEXT NOT NULL,
+	PRIMARY KEY(id)
+);
