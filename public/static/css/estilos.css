@@ -1,0 +1,266 @@
+html, body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200 !important;
+    background :#ededf2;
+    /*height: 100vh;*/
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.title2 {
+    font-size: 250%;
+}
+.mini-title {
+    font-size: 150%;
+    color: #16182a;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.link {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+}
+.link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.edit-delete {
+    padding-top: 50px;
+    opacity: 0%;
+    font-size: 10%;
+    transition: 0.5s;
+}
+.edit-delete:hover {
+    opacity: 100%;
+}
+
+.pointer-hover:hover {
+    cursor: pointer;
+}
+
+.input {
+    margin-bottom: 25px;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 7px;
+    border-radius: 6px;
+    width: 100%;
+    color: rgba(0,0,0,0.8);
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: 0.25s;
+}
+.input:hover {
+    border: 1px solid rgba(0,0,0,0.35);
+}
+.input:focus {
+    transform: scale(1.06);
+    border: 1px solid rgba(0,0,0,0.35);
+}
+.bg-degraded {
+    background-image: linear-gradient(to right, #4141ff, #9f41ff);
+    color: white;
+}
+.btn-form {
+    color: white;
+    background-image: linear-gradient(to right, #4141ff 0%, #9f41ff 100%);
+    border-radius: 5px 20px 5px 20px;
+    transition: 1s;
+}
+.btn-form:hover {
+    border-radius: 20px 5px 20px 5px;
+    color: white;
+    transform: scale(1.06);
+}
+.btn-navbar {
+    color: rgba(255,255,255,0.5);
+    
+    transition: 0.25s;
+}
+.btn-navbar:hover {
+    color: white;
+    transform: scale(1.05);
+}
+.float-right {
+    float: right !important;
+}
+
+.disabled:hover {
+    cursor: not-allowed;
+}
+
+.aparecido-left-right {
+    animation-name: aparecido-l-r;
+    animation-duration: 5s;
+}
+@keyframes aparecido-l-r{
+    0%   {opacity: 0%;   padding-left: 100px;}
+    100% {opacity: 100%; padding-left: 0px;}
+}
+
+.aparecido-bottom-top {
+    animation-name: aparecido-b-t;
+    animation-duration: 4s;
+}
+@keyframes aparecido-b-t{
+    0%   {opacity: 0%;   padding-top: 100px;}
+    100% {opacity: 100%; padding-top: 0px;}
+}
+
+@keyframes aparecido-b-t2{
+    0%   {opacity: 0%;   padding-top: 100px;transform: scale(0.9);}
+    100% {opacity: 100%; padding-top: 0px;transform: scale(1);}
+}
+
+.aparecido-bottom-top2 {
+    animation-name: aparecido-b-t2;
+    animation-duration: 4s;
+}
+
+@keyframes aparecido{
+    0%   {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+@keyframes skew_ini_a{
+    0%   {transform: skewY(3deg);}
+    100% {transform: skewY(-3deg);}
+}
+
+@keyframes navbar{
+    0%   {margin-top: -100px;}
+    100% {margin-top: -0px;}
+}
+
+@keyframes anim_l{
+    0%   {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes anim_l_active{
+    0%   {}
+    35%  {transform: rotate(0deg);}
+    60%  {transform: rotate(360deg);}
+    85%  {transform: scale(1.3);}
+    100% {transform: scale(1);}
+}
+
+.anim-like-active{
+    animation-name: anim_l_active;
+    animation-duration: 3s;
+    color: blue;
+}
+
+.aparecido-r-l{
+    animation-name: aparecido-l-r;
+    animation-duration: 6s;
+}
+
+.recize {
+    transform: scale(1);
+    transition: 0.25s;
+}
+
+.recize:hover {
+    transform: scale(1.1);
+}
+
+.aparecido-b-t{
+    animation-name: aparecido-b-t;
+    animation-duration: 3s;
+}
+.input_busqueda {
+    background: rgba(0,0,0,0.25) !important;
+    color: white;
+    border: none;
+    padding: 7.5px;
+    padding-left: 20px;
+    transition: 0.25s;
+}
+.input_busqueda:focus {
+    background: white !important;
+    color: #212529;
+    transform: scale(1.05);
+}
+.aparecido{
+    animation-name: aparecido;
+    animation-duration: 6s;
+}
+
+.anim-like {
+    transform: rotate(0deg);
+    transition: 500ms;
+    border-radius: 999px;
+}
+
+.anim-like:hover {
+    transform: rotate(360deg);
+
+}
+
+.nav {
+    animation-name: navbar;
+    animation-duration: 3s;
+}
+
+.weight{
+    font-weight: 150 !important;
+}
+.skew_ini {
+    animation-name: skew_ini_a;
+    animation-duration: 4s;
+    background: #ededf2;
+    transform: skewY(-3deg);
+    margin-top: -40px;
+}
+
+.nav-left {
+    background: white;
+    min-height: 100vh !important;
+    border-right: 1px solid rgba(0,0,0,0.25);
+}
