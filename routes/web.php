@@ -29,6 +29,14 @@ Route::post('registro/', 'fastController@registro2');
 Route::get('logeo/', function() {
 	return view('logeo');
 });
+
+#CONFIGURACION
+
+Route::get('configuracion/', function() {
+	session_start();
+	return view('confi');
+});
+
 Route::post('logeo/', 'fastController@logeo2');
 
 #PUBLICACIONES
@@ -56,6 +64,7 @@ Route::get('publicaciones/like/{id}', 'opinionesController@like');
 #COMENTARIO
 
 Route::get('publicaciones/comentario/{id}', 'opinionesController@comentario');
+
 
 #CERRAR SESION
 

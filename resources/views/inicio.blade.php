@@ -14,8 +14,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-12">
-                    <span style="color: #4141ff;font-size: 270%;">Bienvenido a infoFast</span><br>
-                    <span style="color: #4141ff;font-size: 150%;">Comparte ideas y opiniones con gente de todo el mundo</span><br><br><br>
+                    <span style="font-size: 270%;">Bienvenido a infoFast</span><br>
+                    <span style="font-size: 150%;">Comparte ideas y opiniones con gente de todo el mundo</span><br><br><br>
                     <div class="row">
                         <div class="col-6">
                             <a href="{{ url('logeo/') }}" class="btn btn-form weight" style="width: 100%;text-decoration: none;">
@@ -42,8 +42,8 @@
     <div class="row" style="color: #636b6f;">
         <div class="col-md-4 col-sm-12 aparecido-b-t">
             <div class="panel">
-                <span style="font-size: 175%;">Privada o publica?</span><br><br>
-                <p>Puedes elegir entre crear una cuenta privada en la que solo las personas que tu elijas ven tu contenido, o, tener una cuenta publica en la que cualquier persona pueda ver tu contenido</p>
+                <span style="font-size: 175%;">Blog o personal?</span><br><br>
+                <p>Puedes elegir entre crear una cuenta personal en la que solo las personas que tu elijas ven tu contenido, o, tener una cuenta tipo blog en la que cualquier persona pueda ver tu contenido</p>
             </div><br>
         </div>
         <div class="col-md-4 col-sm-12 aparecido-b-t">
