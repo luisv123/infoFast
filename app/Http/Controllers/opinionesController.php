@@ -16,10 +16,13 @@ class opinionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $aux = DB::table('publicaciones')->where('id', '=', $id)->get();
+            $aux = Publicacion
+            ::where('id', '=', $id)
+            ->get();
+
             if(isset($aux[0]->id)) {
-                $aux = DB::table('likes')
-                    ->where('publicacion_id', '=', $id)
+                $aux = Like
+                    ::where('publicacion_id', '=', $id)
                     ->where('usuario_id', '=', $_SESSION['id'])
                     ->get();
                 if(!isset($aux[0]->id)) {
@@ -32,7 +35,9 @@ class opinionesController extends Controller
 
                     return Redirect::to('/publicaciones');
                 }else {
-                    DB::table('likes')->where('id', '=', $aux[0]->id)->delete();
+                    Like
+                    ::where('id', '=', $aux[0]->id)
+                    ->delete();
 
                     Request::session()->flash('mensaje', 'Me gusta eliminado exitosamente');
 

@@ -15,8 +15,8 @@ class CreatePublicacionesTable extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('contenido');
-            $table->string('adjunto');
+            $table->string('contenido')->nullable();
+            $table->string('adjunto')->nullable();
             $table->bigInteger('id_user');
             $table->bigInteger('id_user_original')->nullable();
             $table->timestamps();

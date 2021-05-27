@@ -22,11 +22,10 @@
         -->
         </div>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav" style="padding: 0px !important;">
-                <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link btn link-navbar btn-navbar"><img src="/static/logo2.png" style="max-width: 25px;" alt="Logo"></a>
-                </li>
+        <a href="{{ url('/') }}" class="navbar-brand"><img src="/static/logo2.png" style="max-width: 25px;" alt="Logo"></a>
+
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
                 <li class="nav-item" style="">
                     <a href="{{ url('registro/') }}" class="nav-link btn link-navbar btn-navbar weight">Registrarse</a>
                 </li>

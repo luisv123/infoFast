@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class publicacionesController extends Controller
 {
     public function publicaciones() {
-        $publicaciones = DB::table('publicaciones')
-            ->orderBy('id', 'desc')
+        $publicaciones = \App\Publicacion::
+            orderBy('id', 'desc')
             ->get();
 
         session_start();
@@ -30,7 +30,7 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            if (!empty(Request::input('contenido'))) {
+            if (!empty(Request::input('contenido')) || !empty($_FILES['multimedia']['name'])) {
                 $arr = explode("
 ", Request::input('contenido'));
 
@@ -38,14 +38,46 @@ class publicacionesController extends Controller
                 foreach ($arr as $a) {
                     $contenido .= $a . "/n";
                 }
+                $name = "";
 
-                \App\Publicacion::create([
-                    'contenido'    => $contenido,
-                    'adjunto'     => "sin_foto.png",
-                    'id_user'         => $_SESSION['id'],
-                ]);
+                if(Request::hasFile('multimedia')){
+                    
+                    $file = Request::file('multimedia');
+                    $ult_publi = Publicacion
+                    ::limit(1)
+                    ->orderBy('id', 'desc')
+                    ->get();
+
+                    if(!empty($ult_publi[0]->id)) {
+                        $nombre = $ult_publi[0]->id +1;
+                    }else {
+                        $nombre = 1;
+                    }
+
+                    $tipo1 = explode(".", $file->getClientOriginalName());
+                    $tipo = end($tipo1);
+                    if($tipo == "png" || $tipo == "PNG" || 
+                       $tipo == "jpg" || $tipo == "JPG" || 
+                       $tipo == "jpeg" || $tipo == "JPEG" || 
+                       $tipo == "gif" || $tipo == "GIF" || 
+                       $tipo == "mp4" || $tipo == "MP4" || 
+                       $tipo == "mkv" || $tipo == "MKV" ||
+                       $tipo == "mp3" || $tipo == "MP3"){
+
+                        $name = $nombre.".".$tipo;
+                        echo "Hola D:";
+                        //move_uploaded_file($_FILES['multimedia']['tmp_name'], '/home/lv/LaravelProjects/infofast/public/subidos/'.$file);
+                        $file->move(public_path().'/subidos/',$name);
+                        
+                    }
+                }
                 
-
+                \App\Publicacion::create([
+                    'contenido'     => $contenido,
+                    'adjunto'       => "sin_foto.png",
+                    'id_user'       => $_SESSION['id'],
+                    'adjunto'       => $name
+                ]);
                 Request::session()->flash('mensaje', 'Publicacion agregada exitosamente');
 
                 return Redirect::to('/publicaciones');
@@ -60,8 +92,8 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $val = DB::table('publicaciones')
-                ->where('id', '=', $id)
+            $val = Publicacion
+                ::where('id', '=', $id)
                 ->get();
 
             echo $val;
@@ -90,20 +122,28 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            \Illuminate\Support\Facades\DB::table('publicaciones')
-                ->where('id', '=', $id)
+            $publi = Publicacion
+            ::where('id', '=', $id)
+            ->get();
+
+            if(!empty($publi[0]->adjunto)) {
+                unlink(public_path().'/subidos/'.$publi[0]->adjunto);
+            }
+
+            Publicacion
+                ::where('id', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('publicaciones')
-                ->where('id_user_original', '=', $id)
+            Publicacion
+                ::where('id_user_original', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('likes')
-                ->where('publicacion_id', '=', $id)
+            Like
+                ::where('publicacion_id', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('comentarios')
-                ->where('publicacion_id', '=', $id)
+            Comentario
+                ::where('publicacion_id', '=', $id)
                 ->delete();
 
             Request::session()->flash('mensaje', 'Publicacion borrada exitosamente');

@@ -10,21 +10,26 @@
     	<div class="col-sm-8 col-md-9 aparecido">
             @if(isset($datos[0]->id))
             <div>
-        		<img src="/fondo/sin_fondo.png" alt="FONDO DE PERFIL" style="width: 100%;max-height: 825px;border-radius: 10px;">
-        		<img src="/foto/sin_foto.png" alt="FOTO_PERFIL" style="border-radius: 999px;width: 18%;margin-top: -10%;margin-left: 5%;border: 1.5px solid rgba(0,0,0,0.25);">
-                <button class="btn" style="padding: 5px;background: white;border: 1px solid rgba(0,0,0,0.25);border-radius: 999px;margin-top: -20%;margin-left: -5%;width: 35px;"><i class="fal fa-camera"></i></button>
-                <span style="font-size: 250%;margin-top: -50%;">{{ $datos[0]->nombre }} {{ $datos[0]->apellido }}</span>
+				<form action="{{ url('configuracion/') }}" method="POST">
+					@method('GET')
+					<img src="/fondo/sin_fondo.png" alt="FONDO DE PERFIL" style="width: 100%;max-height: 825px;border-radius: 10px;">
+					<img src="/foto/sin_foto.png" alt="FOTO_PERFIL" style="border-radius: 999px;width: 18%;margin-top: -10%;margin-left: 5%;border: 1.5px solid rgba(0,0,0,0.25);">
+					<span style="font-size: 250%;">{{ $datos[0]->nombre }} {{ $datos[0]->apellido }}</span>
+					@if($datos[0]->id == $_SESSION['id'])
+					<button style="font-size: 150%;margin-left: 23%;" class="btn btn-form">Editar Perfil</button>
+					@endif
+				</form>
         		<br><br><br>
         		<div class="row" style="font-size: 200%;">
         			<div class="col-6" style="text-align: right;">
         				<p>Nombre de Cuenta</p>
         				<p>Edad</p>
-						<p><i class="fal fa-spinner-third fa-spin"></i></p>
+						<p>Amigos</p>
         			</div>
         			<div class="col-6">
-        				<p><span>@</span>{{ $datos[0]->usuario }}</p>
+        				<p style="color: #2684f0;"><span>@</span>{{ $datos[0]->usuario }}</p>
         				<p>{{ $datos[0]->edad }} años</p>
-
+						<p>{{ rand(0,1000) }}</p>
         			</div>
         		</div>
             </div>
