@@ -30,14 +30,15 @@ Route::get('logeo/', function() {
 	return view('logeo');
 });
 
+Route::post('logeo/', 'fastController@logeo2');
+
 #CONFIGURACION
 
 Route::get('configuracion/', function() {
 	session_start();
 	return view('confi');
 });
-
-Route::post('logeo/', 'fastController@logeo2');
+Route::post('configuracion/', 'fastController@configuracion');
 
 #PUBLICACIONES
 

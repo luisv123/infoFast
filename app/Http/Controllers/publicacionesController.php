@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class publicacionesController extends Controller
 {
     public function publicaciones() {
-        $publicaciones = DB::table('publicaciones')
-            ->orderBy('id', 'desc')
+        $publicaciones = \App\Publicacion::
+            orderBy('id', 'desc')
             ->get();
 
         session_start();
@@ -38,11 +38,16 @@ class publicacionesController extends Controller
                 foreach ($arr as $a) {
                     $contenido .= $a . "/n";
                 }
+                $name = "";
 
                 if(Request::hasFile('multimedia')){
                     
                     $file = Request::file('multimedia');
-                    $ult_publi = DB::table('publicaciones')->limit(1)->orderBy('id', 'desc')->get();
+                    $ult_publi = Publicacion
+                    ::limit(1)
+                    ->orderBy('id', 'desc')
+                    ->get();
+
                     if(!empty($ult_publi[0]->id)) {
                         $nombre = $ult_publi[0]->id +1;
                     }else {
@@ -87,8 +92,8 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $val = DB::table('publicaciones')
-                ->where('id', '=', $id)
+            $val = Publicacion
+                ::where('id', '=', $id)
                 ->get();
 
             echo $val;
@@ -117,28 +122,28 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $publi = DB::table('publicaciones')
-            ->where('id', '=', $id)
+            $publi = Publicacion
+            ::where('id', '=', $id)
             ->get();
 
             if(!empty($publi[0]->adjunto)) {
                 unlink(public_path().'/subidos/'.$publi[0]->adjunto);
             }
 
-            \Illuminate\Support\Facades\DB::table('publicaciones')
-                ->where('id', '=', $id)
+            Publicacion
+                ::where('id', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('publicaciones')
-                ->where('id_user_original', '=', $id)
+            Publicacion
+                ::where('id_user_original', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('likes')
-                ->where('publicacion_id', '=', $id)
+            Like
+                ::where('publicacion_id', '=', $id)
                 ->delete();
 
-            \Illuminate\Support\Facades\DB::table('comentarios')
-                ->where('publicacion_id', '=', $id)
+            Comentario
+                ::where('publicacion_id', '=', $id)
                 ->delete();
 
             Request::session()->flash('mensaje', 'Publicacion borrada exitosamente');

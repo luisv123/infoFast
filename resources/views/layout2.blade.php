@@ -24,25 +24,24 @@
                 @method("GET")
                 <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
                     <i class="fal fa-user-circle" style="font-size: 150%;"></i>
-                    <span style="font-size: 100%;margin-bottom: 100px !important;margin-left: 10px;">{{ strtoupper($_SESSION['nombre_completo']) }}</span>
+                    <span style="font-size: 100%;margin-left: 10px;float: right;">{{ strtoupper($_SESSION['nombre_completo']) }}</span>
                 </button><br><br>
             </form>
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
                 <i class="fal fa-bookmark" style="font-size: 150%;"></i>
-                <span style="font-size: 100%;margin-bottom: 100px !important;margin-left: 10px;width: 50% !important;">GUARDADOS</span>
+                <span style="font-size: 100%;margin-left: 10px;width: 50% !important;float: right;">GUARDADOS</span>
             </button><br><br>
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
             <i class="fal fa-user-friends" style="font-size: 150%;"></i>
-                <span style="font-size: 100%;margin-bottom: 100px !important;margin-left: 10px;">AMIGOS</span>
+                <span style="font-size: 100%;margin-left: 10px;float: right;">AMIGOS</span>
             </button><br><br>
             <form action="{{ url('/salir') }}" method="POST">
                 @csrf
-                @method("GET")
                 <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
                     <i class="fal fa-sign-out fa-flip-horizontal" style="font-size: 150%;"></i>
-                    <span style="font-size: 100%;margin-bottom: 100px !important;margin-left: 10px;">SALIR</span>
+                    <span style="font-size: 100%;margin-left: 10px;float: right;">SALIR</span>
                 </button><br><br>
             </form>
         </div>

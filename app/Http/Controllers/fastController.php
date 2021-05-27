@@ -14,7 +14,10 @@ class fastController extends Controller
     public function logeo2() {
         $pw   = hash("sha512", Request::input('pw'));
         $user = Request::input('usuario');
-        $val = \Illuminate\Support\Facades\DB::table('usuarios')->where('usuario', '=', $user)->where('pw', '=', $pw)->get();
+        $val = Usuario
+        ::where('usuario', '=', $user)
+        ->where('pw', '=', $pw)
+        ->get();
         
 
         if (!empty($val[0]->id)){
@@ -44,7 +47,9 @@ class fastController extends Controller
     public function registro2() {
         if (!empty(Request::input('nombre')) && !empty(Request::input('apellido')) && !empty(Request::input('edad')) && !empty(Request::input('usuario')) && !empty(Request::input('pw')) && !empty(Request::input('modo'))) {
             
-            $val = DB::table('usuarios')->where('usuario', '=', Request::input('usuario'))->get();
+            $val = Usuario
+            ::where('usuario', '=', Request::input('usuario'))
+            ->get();
 
             if(!isset($val[0]->id)) {
                 $usr = new Usuario;
@@ -63,8 +68,8 @@ class fastController extends Controller
                 //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
                 var_dump($usr);
 
-                $val = DB::table('usuarios')
-                    ->where('usuario', '=', Request::input('usuario'))
+                $val = Usuario
+                    ::where('usuario', '=', Request::input('usuario'))
                     ->get();
 
                 session_start();
@@ -99,8 +104,8 @@ class fastController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $datos = DB::table('usuarios')
-                ->where('id', '=', $id)
+            $datos = Usuario
+                ::where('id', '=', $id)
                 ->get();
 
             return view('perfil', ['datos' => $datos]);
@@ -111,8 +116,8 @@ class fastController extends Controller
     public function buscar() {
         session_start();
 
-        $datos = DB::table('usuarios')
-            ->where('nombre', 'like', '%'.Request::input('busqueda').'%')
+        $datos = Usuario
+            ::where('nombre', 'like', '%'.Request::input('busqueda').'%')
             ->orWhere('apellido', 'like', '%'.Request::input('busqueda').'%')
             ->orWhere('usuario', 'like', '%'.Request::input('busqueda').'%')
             ->get();
@@ -120,6 +125,16 @@ class fastController extends Controller
         //var_dump($datos);
 
         return view('buscar', ['datos' => $datos, 'busqueda' => Request::input('busqueda')]);
+    }
+
+    public function configuracion() {
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            return Redirect::to('/publicaciones');
+        }
     }
 
     public function salir() {

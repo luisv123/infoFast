@@ -128,7 +128,7 @@
                                 
                                 ?>
                                 <img src="/subidos/{{ $publi->adjunto }}" alt="FOTO" style="width: 100%;border-radius: 20px;"><br>
-                                <p style="font-size: 150%;font-weight: 400;color: white;text-shadow: -1px 0 black, 0 1px rgba(0,0,0,0.5), 1px 0 rgba(0,0,0,0.5), 0 -1px rgba(0,0,0,0.5);margin-top: -10% !important;margin-left: 5%;">GIF</p>
+                                <p style="font-size: 150%;font-weight: 400;color: white;text-shadow: -1px 0 black, 0 1px rgba(0,0,0,0.5), 1px 0 rgba(0,0,0,0.5), 0 -1px rgba(0,0,0,0.5);margin-top: -10% !important;margin-left: 5%;">GIF</p><br>
                                 <?php
                             }
 
@@ -240,15 +240,15 @@
                             </div>
                             @endif
                         </div>
-                
-                
-
-            @endforeach
-        </div><br><br><br>
+                    </div><br><br><br>
+                @endforeach
+                </div><br><br><br>
+                <div style="width: 80%;margin-left: 20%;">
             <center>
                 <span style="font-size: 200%;">No hay mas Publicaciones</span><br><br>
                 <span>En este momento no hay publicaciones.<br>Espera a que alguien publique algo</span><br>
             </center>
+            <div style="width: 80%;margin-left: 20%;">
         
         </div>
         <div class="col-sm-0 col-md-2"></div>
@@ -260,7 +260,7 @@
 
 <script>
     document.getElementById('btn_publi_c').disabled = true;
-    document.getElementById('btn_publi_c').style = "opacity: 50%;width: 100%;border-radius: 5px 20px 5px 20px;color: white;";
+    document.getElementById('btn_publi_c').style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
     document.getElementById('btn_publi_c').className = "btn bg-degraded disabled";
     document.getElementById('btn_publi_c').title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
 
@@ -271,7 +271,7 @@
         var btn = document.getElementById('btn_publi_c');
         if (text.value == "" && multi.value == "") {
             btn.disabled = true;
-            btn.style = "opacity: 50%;width: 100%;border-radius: 5px 20px 5px 20px;color: white;";
+            btn.style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
             btn.className = "btn bg-degraded disabled";
             btn.title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
         }else {
@@ -284,7 +284,7 @@
         if(multi.value == "") {
             label.style="color: #212529;"
         }else {
-            label.style="color: blue;"
+            label.style="color: #2684f0;"
         }
     }
     function changed2() {

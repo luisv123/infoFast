@@ -117,7 +117,7 @@ html, body {
     transition: 1s;
 }
 .btn-form:hover {
-    border-radius: 49px;
+    border-radius: 59px;
     color: white;
     transform: scale(1.06);
 }
