@@ -18,7 +18,7 @@ class CreatePublicacionesTable extends Migration
             $table->string('contenido')->nullable();
             $table->string('adjunto')->nullable();
             $table->bigInteger('id_user');
-            $table->bigInteger('id_user_original')->nullable();
+            $table->bigInteger('id_publi_original')->nullable();
             $table->timestamps();
         });
     }

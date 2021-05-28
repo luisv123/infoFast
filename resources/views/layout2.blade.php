@@ -72,7 +72,7 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <li class="nav-item">
-                <button style="color: white;" class="nav-link btn link-navbar" data-toggle="modal" data-target="#cpublicacion"><i class="fal fa-plus" style="font-size: 150%;"></i></button>
+                <button style="color: white;" class="nav-link btn link-navbar" data-toggle="modal" data-target="#cpublicacion">CREAR PUBLICACION <i class="fal fa-plus"></i></button>
             </li>
             <li class="nav-item">
                 <button style="color: white;" class="nav-link btn link-navbar"><i class="fal fa-bell" style="font-size: 150%;"></i></button>

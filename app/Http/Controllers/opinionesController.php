@@ -16,12 +16,12 @@ class opinionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $aux = Publicacion
+            $aux = \App\Publicacion
             ::where('id', '=', $id)
             ->get();
 
             if(isset($aux[0]->id)) {
-                $aux = Like
+                $aux = \App\Like
                     ::where('publicacion_id', '=', $id)
                     ->where('usuario_id', '=', $_SESSION['id'])
                     ->get();
@@ -35,7 +35,7 @@ class opinionesController extends Controller
 
                     return Redirect::to('/publicaciones');
                 }else {
-                    Like
+                    \App\Like
                     ::where('id', '=', $aux[0]->id)
                     ->delete();
 

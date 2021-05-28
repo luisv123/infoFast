@@ -11,8 +11,9 @@
             <div class="col-sm-9 col-md-9">
                 <div class="panel" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px;">
                     <br>
-                        <form action="{{ url('configuracion/') }}" method="POST">
+                        <form action="{{ url('configuracion/') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <span style="font-size: 250%;"><i class="fal fa-cog"></i> Configuración</span>
                             <br><br>
                             <hr>
@@ -42,7 +43,7 @@
                                         E-mail
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="mail" class="form-control col-6" style="float: right;" value="">
+                                        <input type="text" name="email" class="form-control col-6" style="float: right;" value="{{ $_SESSION['email'] }}">
                                     </div>
                                 </div><br><br>
                                 <div class="row">

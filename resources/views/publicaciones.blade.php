@@ -23,6 +23,15 @@
                 </div>
                 
             @endif
+            @if(null !== session('error'))
+
+                <div class="fixed-top aparecido-bottom-top" style="margin-top: 75px;margin-left: 73%;margin-right: 2%;" id="mensaje">
+                    <div class="alert alert-danger" style="b">
+                        <span><i class="fal fa-times-circle"></i> {{ session('error') }}</span>        
+                    </div>
+                </div>
+                
+            @endif
             <div class="aparecido">
                 <div style="width: 80%;margin-left: 20%;">
             	@foreach($publicaciones as $publi)
@@ -31,7 +40,7 @@
                         $publi_user   = \App\Usuario::where('id', '=', $publi->id_user)->get();
                         $publi_like   = \App\Like::where('publicacion_id', '=', $publi->id)->get();;
                         $publi_com    = \App\Comentario::where('publicacion_id', '=', $publi->id)->orderBy('id', 'desc')->get();
-                        $publi_refast = \App\Publicacion::where('id', '=', $publi->id)->where('id_user_original', '!=', null)->get();
+                        $publi_refast = \App\Publicacion::where('id', '=', $publi->id)->where('id_publi_original', '=', $publi->id)->get();
 
                         $like = 0;
                         foreach ($publi_like as $publi_l) {
@@ -54,7 +63,7 @@
                         foreach ($publi_refast as $publi_r) {
                             $refast ++;
                             
-                            if ($publ_r->id_user == $_SESSION['id']) {
+                            if ($publi_r->id_user == $_SESSION['id']) {
                                 $yo_refast = 1;
                             }
                         }
@@ -74,30 +83,45 @@
                                 
                         	</div>
                         	<div class="col-10">
-                                <form method="POST" action="{{ url('publicaciones/borrar') . '/' . $publi->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <?php
-                                        $nombre = explode(" ", $publi_user[0]->nombre);
-                                        $apellido = explode(" ", $publi_user[0]->apellido);
-                                    ?>
-                            		<span style="font-size: 200%;">{{ $nombre[0] }} {{ $apellido[0] }}</span>
-                                    @if($publi_user[0]->id == $_SESSION['id'])
-                                        <button class="btn" style="border-radius: 999px;float: right;border: 2px solid red;color: red;opacity: 50%;">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                <?php
+                                    $nombre = explode(" ", $publi_user[0]->nombre);
+                                    $apellido = explode(" ", $publi_user[0]->apellido);
+                                ?>
+                                <span style="font-size: 200%;">{{ $nombre[0] }} {{ $apellido[0] }}</span>
+                                <!--
+                                    <button class="btn" style="border-radius: 999px;float: right;border: 2px solid red;color: red;opacity: 50%;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                -->
+                                <button style="float: right;" class="btn" data-toggle="collapse" data-target="#more{{ $publi->id }}"><i class="fal fa-ellipsis-v" style="font-size: 120%;" data-target="#more{{ $publi->id }}"></i></button>
 
-                                    @endif
-                                </form>
+                                <div style="position: absolute;width: 100%;">
+                                    <div class="row">
+                                        <div class="col-sm-1 col-md-6"></div>
+                                        <div class="col-sm-11 col-md-6">
+                                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 10px 20px 20px;padding: 5px;" id="more{{ $publi->id }}">
+                                                @if($publi->id_user == $_SESSION['id'])
+                                                <form action="{{ url('publicaciones/borrar') }}/{{$publi->id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn" style="width: 100%;color: red;"><i class="fal fa-trash"></i> Borrar</button>
+                                                </form>
+                                                <hr>
+                                                @endif
+                                                <button class="btn" style="width: 100%;"><i class="fal fa-flag"></i> Denunciar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         	</div>
+                            
                         </div>
                         <hr style="width: 100% !important;margin-right: 10px;margin-left: 10px">
                         <?php
-                        if(!empty($publi->id_user_original)){
-                            $refast_user = DB::table('usuarios')
-                                ->where('id', '=', $publi->id_user_original)
-                                ->get();
-                            
+                        if(!empty($publi->id_publi_original)){
+                            $refast_user = \App\Usuario
+                            ::where('id', '=', $publi->id_user_original)
+                            ->get();
                         }
                         ?>
                         <p style="text-align: justify;padding-bottom: 0px;">

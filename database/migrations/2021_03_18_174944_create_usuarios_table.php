@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->integer('edad');
             $table->string('idioma');
             $table->string('usuario')->unique();
+            $table->string('email')->unique();
             $table->string('pw');
             $table->string('modo');
             $table->string('color');

@@ -38,7 +38,7 @@ Route::get('configuracion/', function() {
 	session_start();
 	return view('confi');
 });
-Route::post('configuracion/', 'fastController@configuracion');
+Route::put('configuracion/', 'fastController@configuracion');
 
 #PUBLICACIONES
 

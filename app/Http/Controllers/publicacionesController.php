@@ -43,7 +43,7 @@ class publicacionesController extends Controller
                 if(Request::hasFile('multimedia')){
                     
                     $file = Request::file('multimedia');
-                    $ult_publi = Publicacion
+                    $ult_publi = \App\Publicacion
                     ::limit(1)
                     ->orderBy('id', 'desc')
                     ->get();
@@ -92,7 +92,7 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $val = Publicacion
+            $val = \App\Publicacion
                 ::where('id', '=', $id)
                 ->get();
 
@@ -104,7 +104,7 @@ class publicacionesController extends Controller
                 'contenido'          => $val[0]->contenido,
                 'adjunto'            => $val[0]->adjunto,
                 'id_user'            => $_SESSION['id'],
-                'id_user_original'   => $id,
+                'id_publi_original'  => $id,
             ]);
             
             echo "Hola";
@@ -122,27 +122,27 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
-            $publi = Publicacion
+            $publi = \App\Publicacion
             ::where('id', '=', $id)
             ->get();
 
-            if(!empty($publi[0]->adjunto)) {
+            if(!empty($publi[0]->adjunto) && empty($publi[0]->id_user_original)) {
                 unlink(public_path().'/subidos/'.$publi[0]->adjunto);
             }
 
-            Publicacion
+            \App\Publicacion
                 ::where('id', '=', $id)
                 ->delete();
 
-            Publicacion
+            \App\Publicacion
                 ::where('id_user_original', '=', $id)
                 ->delete();
 
-            Like
+            \App\Like
                 ::where('publicacion_id', '=', $id)
                 ->delete();
 
-            Comentario
+            \App\Comentario
                 ::where('publicacion_id', '=', $id)
                 ->delete();
 

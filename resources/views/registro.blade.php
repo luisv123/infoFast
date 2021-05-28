@@ -17,13 +17,20 @@
                     <br>
                     <form action="{{ url('/registro') }}" method="post">
                         @csrf
-
-                        Nombre
-                        <input type="text" name="nombre" class="input">
-                        <br>
-
-                        Apellido
-                        <input type="text" name="apellido" class="input">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                Nombre
+                                <input type="text" name="nombre" class="input">
+                                <br>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                Apellido
+                                <input type="text" name="apellido" class="input">
+                                <br>
+                            </div>
+                        </div>
+                        E-mail
+                        <input type="text" name="email" class="input">
                         <br>
 
                         Edad
