@@ -147,9 +147,13 @@ class fastController extends Controller
             return Redirect::to('/');
         }else {
             if(!empty(Request::input('nombre')) 
+            && Request::input('nombre') !== $_SESSION['nombre']
             && !empty(Request::input('apellido')) 
+            && Request::input('apellido') !== $_SESSION['apellido']
             && !empty(Request::input('email')) 
-            && !empty(Request::input('usuario'))) {
+            && Request::input('email') !== $_SESSION['email']
+            && !empty(Request::input('usuario')) 
+            && Request::input('usuario') !== $_SESSION['usuario']) {
                 $user = \App\Usuario::find($_SESSION['id']);
                 $user->nombre = Request::input('nombre');
                 $_SESSION['nombre'] = Request::input('nombre');
@@ -182,6 +186,13 @@ class fastController extends Controller
                 }
 
                 echo Request::input('nombre');
+            }
+            if(Request::input('color') !== $_SESSION['color']) {
+                $user = Usuario::find($_SESSION['id']);
+
+                $user->color       = Request::input('color');
+                $user->save();
+                $_SESSION['color'] = Request::input('color');
             }
             return Redirect::to('/publicaciones');
         }

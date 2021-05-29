@@ -135,7 +135,7 @@ class publicacionesController extends Controller
                 ->delete();
 
             \App\Publicacion
-                ::where('id_user_original', '=', $id)
+                ::where('id_publi_original', '=', $id)
                 ->delete();
 
             \App\Like

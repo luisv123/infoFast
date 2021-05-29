@@ -99,16 +99,19 @@
                                     <div class="row">
                                         <div class="col-sm-1 col-md-6"></div>
                                         <div class="col-sm-11 col-md-6">
-                                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 10px 20px 20px;padding: 5px;" id="more{{ $publi->id }}">
+                                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;padding: 5px;" id="more{{ $publi->id }}">
                                                 @if($publi->id_user == $_SESSION['id'])
                                                 <form action="{{ url('publicaciones/borrar') }}/{{$publi->id}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn" style="width: 100%;color: red;"><i class="fal fa-trash"></i> Borrar</button>
+                                                    <button class="btn" style="width: 100%;color: red !important;text-align: left;"><i class="fal fa-trash"></i> Borrar</button>
                                                 </form>
-                                                <hr>
+                                                <button class="btn" style="width: 100%;text-align: left;"><i class="fal fa-pencil"></i> Editar</button>
+                                                
                                                 @endif
-                                                <button class="btn" style="width: 100%;"><i class="fal fa-flag"></i> Denunciar</button>
+                                                @if($publi->id_user !== $_SESSION['id'])
+                                                <button class="btn" style="width: 100%;text-align: left;"><i class="fal fa-bookmark"></i> Guardar</button>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

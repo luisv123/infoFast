@@ -10,7 +10,12 @@
     <title id="title">@yield('title')</title>
 
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    @if($_SESSION['color'] == 'claro')
     <link rel="stylesheet" href="/static/css/estilos.css">
+    @endif
+    @if($_SESSION['color'] == 'oscuro')
+    <link rel="stylesheet" href="/static/css/estilos_dark.css">
+    @endif
 
     <script src="/static/js/all.min.js"></script>
 </head>
@@ -78,18 +83,13 @@
                 <button style="color: white;" class="nav-link btn link-navbar"><i class="fal fa-bell" style="font-size: 150%;"></i></button>
             </li>
             <li class="nav-item" id="btn_info_show">
-                <button onclick="info_show()" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>
+                <button data-toggle="collapse" data-target="#panel-info" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>
             </li>
-        </div>
-    </nav>
-    <div id="panel-info" class="fixed-top" style="margin-top: 75px;float: right !important;display: none;">
-        <div class="row" style="width: 100%;">
-            <div class="col-sm-1 col-md-9"></div>
-            <div class="col-sm-11 col-md-3">
-                <div class="panel" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 5px 20px 20px;">
+            <div class="col-sm-11 col-md-3 justify-content-end" style="position: absolute;margin-top: 350px !important;float: right !important;">
+                <div class="panel collapse" id="panel-info" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 5px 20px 20px;">
                     <center>
                         <img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;width: 25%;border: 1px solid rgba(0,0,0,0.125);"><br><br>
-                        <span style="font-size: 150%;">{{ $_SESSION['nombre_completo'] }}</span><br>
+                        <span style="font-size: 150%;" class="color">{{ $_SESSION['nombre_completo'] }}</span><br>
                         <hr>
                     </center>
                     <form action="{{ url('/configuracion') }}" method="POST">
@@ -101,7 +101,9 @@
                 </div>
             </div>
         </div>
-    </div>
+        
+    </nav>
+    
     <div class="modal fade" id="cpublicacion">
         <div class="modal-dialog modal-dialog-centered modal-xm">
             <div class="modal-content" id="changemodal" style="border-radius: 20px;">
@@ -127,16 +129,6 @@
     </div>
 
 @yield('contenido')
-    <script>
-        function info_show() {
-            document.getElementById('panel-info').style = 'margin-top: 75px;float: right !important;';
-            document.getElementById('btn_info_show').innerHTML = '<button onclick="info_hide()" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION["foto"] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>';
-        }
-        function info_hide() {
-            document.getElementById('panel-info').style = 'margin-top: 75px;float: right !important;display: none;';
-            document.getElementById('btn_info_show').innerHTML = '<button onclick="info_show()" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION["foto"] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>';
-        }
-    </script>
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/popper.min.js"></script>

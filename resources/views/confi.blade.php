@@ -27,7 +27,7 @@
                                         Nombre
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="nombre" class="form-control col-6" style="float: right;" value="{{ $_SESSION['nombre'] }}">
+                                        <input type="text" name="nombre" class="form-control col-9" style="float: right;" value="{{ $_SESSION['nombre'] }}">
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -35,7 +35,7 @@
                                         Apellido
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="apellido" class="form-control col-6" style="float: right;" value="{{ $_SESSION['apellido'] }}">
+                                        <input type="text" name="apellido" class="form-control col-9" style="float: right;" value="{{ $_SESSION['apellido'] }}">
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -43,7 +43,7 @@
                                         E-mail
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="email" class="form-control col-6" style="float: right;" value="{{ $_SESSION['email'] }}">
+                                        <input type="text" name="email" class="form-control col-9" style="float: right;" value="{{ $_SESSION['email'] }}">
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -51,7 +51,7 @@
                                         Usuario
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="usuario" class="form-control col-6" style="float: right;" value="{{ $_SESSION['usuario'] }}">
+                                        <input type="text" name="usuario" class="form-control col-9" style="float: right;" value="{{ $_SESSION['usuario'] }}">
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -78,9 +78,15 @@
                                         Tema de color
                                     </div>
                                     <div class="col-6" style="">
-                                        <select name="color" class="custom-select col-6" style="float: right ;">
+                                        <select name="color" class="custom-select col-9" style="float: right;">
+                                            @if($_SESSION['color'] == 'claro')
                                             <option selected="selected" value="claro">Claro</option>
                                             <option value="oscuro">Oscuro</option>
+                                            @endif
+                                            @if($_SESSION['color'] == 'oscuro')
+                                            <option value="claro">Claro</option>
+                                            <option selected="selected" value="oscuro">Oscuro</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>

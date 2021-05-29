@@ -3,7 +3,11 @@ html, body {
     font-weight: 200 !important;
     background :#f4f4f7;
     /*height: 100vh;*/
+    color: black;
     margin: 0;
+}
+#panel-info {
+    
 }
 
 .full-height {
@@ -197,11 +201,12 @@ html, body {
 .anim-like-active{
     animation-name: anim_l_active;
     animation-duration: 3s;
-    color: blue;
+    color: #2684f0 !important;
 }
 .color-blue-like {
-    color: blue;
+    color: #2684f0 !important;
 }
+
 
 .aparecido-r-l{
     animation-name: aparecido-l-r;
