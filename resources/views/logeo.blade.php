@@ -13,12 +13,12 @@
                     <center>
                         <br><br>
                         <span style="font-size: 250%;">Inicio de Sesion</span><br>
-                        <br>
+                        <br><br>
                     </center>
                     <form action="{{ url('/logeo') }}" method="post">
                         @csrf
 
-                        Usuario
+                        Usuario o E-mail
                         <input type="text" name="usuario" class="input">
                         <br>
 

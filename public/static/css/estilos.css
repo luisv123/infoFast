@@ -6,8 +6,8 @@ html, body {
     color: black;
     margin: 0;
 }
-#panel-info {
-    
+.color {
+    color: black;
 }
 
 .full-height {
@@ -44,6 +44,14 @@ html, body {
 .mini-title {
     font-size: 150%;
     color: #16182a;
+}
+
+.btn-option {
+    text-align: left;
+    width: 100%;
+}
+.btn-option:hover {
+    background: rgba(0,0,0,0.03);
 }
 
 .links > a {
@@ -111,19 +119,19 @@ html, body {
     border: 1px solid rgba(0,0,0,0.35);
 }
 .bg-degraded {
-    background-image: linear-gradient(to right, #2684f0, #9353ce);
+    background-image: linear-gradient(to right, #0730a1, #2dbdff);
     color: white;
 }
 .btn-form {
     color: white;
-    background-image: linear-gradient(to right, #2684f0 0%, #9353ce 100%);
+    background-image: linear-gradient(to right, #0730a1, #2dbdff);
     border-radius: 10px;
     transition: 1s;
 }
 .btn-form:hover {
     border-radius: 59px;
     color: white;
-    transform: scale(1.06);
+    transform: scale(1.03);
 }
 .btn-navbar {
     color: rgba(255,255,255,0.5);

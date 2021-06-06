@@ -4,7 +4,7 @@
 @section('contenido')
 <style>
     body {
-        background: linear-gradient(to right, #4141ff, #9f41ff);
+        background-image: linear-gradient(to right, #0730a1, #2dbdff);
     }
     
 </style>
@@ -27,7 +27,7 @@
                 <div class="col-md-4 col-sm-0"></div>
                 <div class="col-md-3 col-sm-12">
                     <center>
-                        <img src="/static/logo.png" style="max-width: 50%;" alt="infoFast" style="margin-left: 50%;">
+                        <img src="/static/logo.png" style="max-width: 60%;margin-top: 20%;" alt="infoFast" style="margin-left: 50%;">
                     </center>
                 </div>
             </div>
@@ -41,19 +41,19 @@
     <br><br><br><br><br><br><br><br><br>
     <div class="row" style="color: #636b6f;">
         <div class="col-md-4 col-sm-12 aparecido-b-t">
-            <div class="panel">
+            <div class="panel"style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px;">
                 <span style="font-size: 175%;">Blog o personal?</span><br><br>
                 <p>Puedes elegir entre crear una cuenta personal en la que solo las personas que tu elijas ven tu contenido, o, tener una cuenta tipo blog en la que cualquier persona pueda ver tu contenido</p>
             </div><br>
         </div>
         <div class="col-md-4 col-sm-12 aparecido-b-t">
-            <div class="panel">
+            <div class="panel"style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px;">
                 <span style="font-size: 175%;">Variedad multimedia</span><br><br>
                 <p>Puedes publicar combinaciones de texto con videos, imagenes, gifs, incluso audio! Tambien puedes publicar multimedia sin necesidad de contenido, o ,texto sin archivos multimedia</p>
             </div><br>
         </div>
         <div class="col-md-4 col-sm-12 aparecido-b-t">
-            <div class="panel">
+            <div class="panel"style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px;">
                 <span style="font-size: 175%;">Borra y edita</span><br><br>
                 <p>Puedes crear tantas publicaciones como quieras o borrar y editar tus publicaciones, cuentas y comentarios cuando quieras. Unque cuidado: Una ves que borres algo no podras desacerlo nunca</p>
             </div><br>

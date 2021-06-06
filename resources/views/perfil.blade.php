@@ -32,6 +32,15 @@
 						<p>{{ rand(0,1000) }}</p>
         			</div>
         		</div>
+
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">Publicaciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Amigos</a>
+					</li>
+				</ul> 
             </div>
             @endif
             @if(!isset($datos[0]->id))

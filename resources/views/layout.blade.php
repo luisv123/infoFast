@@ -15,6 +15,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-degraded navbar-dark navbar-xg fixed-top nav" style="border-bottom: 2px solid white;">
+        <!-- Odett es OOOrreeeeendaaaaaaaaa -->
 
         <div id="btn_despl navbar-toggler">
         <!--
@@ -27,10 +28,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item" style="">
-                    <a href="{{ url('registro/') }}" class="nav-link btn link-navbar btn-navbar weight">Registrarse</a>
+                    <a href="{{ url('registro/') }}" class="nav-link btn link-navbar btn-navbar weight" style="color: white;">Registrarse</a>
                 </li>
                 <li class="nav-item float-right">
-                    <a href="{{ url('logeo/') }}" class="nav-link btn link-navbar btn-navbar weight">Iniciar Sesion</a>
+                    <a href="{{ url('logeo/') }}" class="nav-link btn link-navbar btn-navbar weight" style="color: white;">Iniciar Sesion</a>
                 </li>
             </ul>
         </div>

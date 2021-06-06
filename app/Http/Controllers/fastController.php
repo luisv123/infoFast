@@ -14,10 +14,17 @@ class fastController extends Controller
     public function logeo2() {
         $pw   = hash("sha512", Request::input('pw'));
         $user = Request::input('usuario');
-        $val = Usuario
-        ::where('usuario', '=', $user)
-        ->where('pw', '=', $pw)
-        ->get();
+        if(filter_var($user, FILTER_VALIDATE_EMAIL)){
+            $val = Usuario
+            ::where('email', '=', $user)
+            ->where('pw', '=', $pw)
+            ->get();
+        }else {
+            $val = Usuario
+            ::where('usuario', '=', $user)
+            ->where('pw', '=', $pw)
+            ->get();
+        }
         
 
         if (!empty($val[0]->id)){
@@ -129,11 +136,26 @@ class fastController extends Controller
     public function buscar() {
         session_start();
 
+        $aux = explode('@', Request::input('busqueda'));
+        if(isset($aux[1])){
+            $a = "";
+            foreach($aux as $au){
+                $a .= $au;
+            }
+            $datos = Usuario
+                ::where('nombre', 'like', '%'.$a.'%')
+                ->orWhere('apellido', 'like', '%'.$a.'%')
+                ->orWhere('usuario', 'like', '%'.$a.'%')
+                ->get();
+        }else {
+
         $datos = Usuario
             ::where('nombre', 'like', '%'.Request::input('busqueda').'%')
             ->orWhere('apellido', 'like', '%'.Request::input('busqueda').'%')
             ->orWhere('usuario', 'like', '%'.Request::input('busqueda').'%')
             ->get();
+
+        }
 
         //var_dump($datos);
 

@@ -18,10 +18,11 @@
     @endif
 
     <script src="/static/js/all.min.js"></script>
+    
 </head>
 <body>
     
-    <div class="fixed-top nav-left navbar-left" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);width: 20%;float: right !important;margin-right: 75%;padding: 10px;">
+    <div class="fixed-top nav-left navbar-left" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);width: 22%;float: right !important;margin-right: 78%;padding: 10px;">
         <br><br><br><br>
         <div class="aparecido-b-t">
             <form action="{{ url('/perfil/') }}/{{ $_SESSION['id'] }}" method="POST">
@@ -35,7 +36,7 @@
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
                 <i class="fal fa-bookmark" style="font-size: 150%;"></i>
-                <span style="font-size: 100%;margin-left: 10px;width: 50% !important;float: right;">GUARDADOS</span>
+                <span style="font-size: 100%;margin-left: 10px;float: right;">GUARDADOS</span>
             </button><br><br>
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
@@ -129,6 +130,42 @@
     </div>
 
 @yield('contenido')
+    <script>
+        document.getElementById('btn_publi_c').disabled = true;
+        document.getElementById('btn_publi_c').style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
+        document.getElementById('btn_publi_c').className = "btn bg-degraded disabled";
+        document.getElementById('btn_publi_c').title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
+
+        function changed() {
+            var text = document.getElementById('text_publi_c');
+            var multi = document.getElementById('cargar_img');
+            var label = document.getElementById('label_img');
+            var btn = document.getElementById('btn_publi_c');
+            if (text.value == "" && multi.value == "") {
+                btn.disabled = true;
+                btn.style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
+                btn.className = "btn bg-degraded disabled";
+                btn.title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
+            }else {
+
+                btn.disabled = false;
+                btn.style = "opacity: 100%;width: 100%;";
+                btn.className = "btn btn-form bg-degraded";
+                btn.title = "";
+            }
+            if(multi.value == "") {
+                label.style="color: #212529;"
+            }else {
+                label.style="color: #2684f0;"
+            }
+        }
+        function changed2() {
+            alert("Hola");
+        }
+        setTimeout(function() {
+            document.getElementById('mensaje').innerHTML = '';
+        },5000)
+    </script>
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/popper.min.js"></script>

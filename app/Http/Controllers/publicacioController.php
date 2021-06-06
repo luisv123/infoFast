@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
-class publicacionesController extends Controller
+class publicacioController extends Controller
 {
-    public function publicaciones() {
+    public function index()
+    {
         $publicaciones = \App\Publicacion::
             orderBy('id', 'desc')
             ->get();
@@ -23,8 +24,8 @@ class publicacionesController extends Controller
         }
     }
 
-
-    public function publicaciones_crear() {
+    public function store(Request $request)
+    {
         session_start();
         if(!isset($_SESSION['id'])){
             session_destroy();
@@ -65,6 +66,7 @@ class publicacionesController extends Controller
                        $tipo == "mp3" || $tipo == "MP3"){
 
                         $name = $nombre.".".$tipo;
+                        echo "Hola D:";
                         //move_uploaded_file($_FILES['multimedia']['tmp_name'], '/home/lv/LaravelProjects/infofast/public/subidos/'.$file);
                         $file->move(public_path().'/subidos/',$name);
                         
@@ -85,68 +87,48 @@ class publicacionesController extends Controller
         }
     }
 
-    public function publicaciones_refast($id) {
-        session_start();
-        if(!isset($_SESSION['id'])){
-            session_destroy();
-            return Redirect::to('/');
-        }else {
-            $val = \App\Publicacion
-                ::where('id', '=', $id)
-                ->get();
-
-            echo $val;
-
-            //die();
-
-            \App\Publicacion::create([
-                'contenido'          => $val[0]->contenido,
-                'adjunto'            => $val[0]->adjunto,
-                'id_user'            => $_SESSION['id'],
-                'id_publi_original'  => $id,
-            ]);
-
-            Request::session()->flash('mensaje', 'Re-fast agregado exitosamente');
-
-            return Redirect::to('/publicaciones');
-        }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-    public function publicaciones_borrar($id) {
-        session_start();
-        if(!isset($_SESSION['id'])){
-            session_destroy();
-            return Redirect::to('/');
-        }else {
-            $publi = \App\Publicacion
-            ::where('id', '=', $id)
-            ->get();
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-            if(!empty($publi[0]->adjunto) && empty($publi[0]->id_user_original)) {
-                unlink(public_path().'/subidos/'.$publi[0]->adjunto);
-            }
-
-            \App\Publicacion
-                ::where('id', '=', $id)
-                ->delete();
-
-            \App\Publicacion
-                ::where('id_publi_original', '=', $id)
-                ->delete();
-
-            \App\Like
-                ::where('publicacion_id', '=', $id)
-                ->delete();
-
-            \App\Comentario
-                ::where('publicacion_id', '=', $id)
-                ->delete();
-
-            Request::session()->flash('mensaje', 'Publicacion borrada exitosamente');
-
-            return Redirect::to('/publicaciones');
-            
-        }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
