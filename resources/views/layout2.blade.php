@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="/static/logo.png">
+    <link rel="icon" href="/static/logo3.png">
 
     <title id="title">@yield('title')</title>
 
@@ -81,7 +81,10 @@
                 <button style="color: white;" class="nav-link btn link-navbar" data-toggle="modal" data-target="#cpublicacion">CREAR PUBLICACION <i class="fal fa-plus"></i></button>
             </li>
             <li class="nav-item">
-                <button style="color: white;" class="nav-link btn link-navbar"><i class="fal fa-bell" style="font-size: 150%;"></i></button>
+                <button style="color: white;" class="nav-link btn link-navbar">
+                    <i class="fal fa-bell" style="font-size: 150%;"></i>
+                    <span class="noti-plus">9+</span>
+                </button>
             </li>
             <li class="nav-item" id="btn_info_show">
                 <button data-toggle="collapse" data-target="#panel-info" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>
@@ -112,7 +115,7 @@
                     @csrf
                     <div class="modal-header">
                         <span class="modal-title" style="font-size: 150%;">Crear Publicacion</span>
-                        <button type="button" class="btn close" data-dismiss="modal"><i class="fal fa-times"></i></button>
+                        <button type="button" class="btn close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body" style="padding: 0px;b">
                         <textarea name="contenido" class="form-control" placeholder="Escribe el contenido de tu publicacion" style="border: none;border-radius: 5px;min-height: 250px;max-height: 250px;background: transparent;" id="text_publi_c" oninput="changed()"></textarea>

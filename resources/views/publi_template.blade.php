@@ -34,6 +34,34 @@
         }
 
         ?>
+    <div class="modal fade" id="edit_publicacion{{ $publi->id }}">
+        <div class="modal-dialog modal-dialog-centered modal-xm">
+            <div class="modal-content" id="changemodal" style="border-radius: 20px;">
+                <form action="{{ url('publicaciones/editar/'.$publi->id.'') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <span class="modal-title" style="font-size: 150%;">Editar Publicacion</span>
+                        <button type="button" class="btn close" data-dismiss="modal"><i class="fal fa-times"></i></button>
+                    </div>
+                    <div class="modal-body" style="padding: 0px;b">
+                        <?php
+                            $contenido = explode('/n', $publi->contenido);
+                        ?>
+                        <textarea name="contenido" class="form-control" placeholder="Escribe el contenido de tu publicacion" style="border: none;border-radius: 5px;min-height: 250px;max-height: 250px;background: transparent;" id="text_publi_c" oninput="changed()"
+                        ><?php foreach ($contenido as $con) {
+                            echo $con."
+";
+                        } ?></textarea>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-form bg-degraded" id="btn_publi_c" style="width: 100%;">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="panel" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px;">
 
@@ -64,14 +92,14 @@
                     <div class="row">
                         <div class="col-sm-1 col-md-6"></div>
                         <div class="col-sm-11 col-md-6">
-                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;padding: 0px;padding-top: 10px;padding-bottom: 10px;" id="more{{ $publi->id }}">
+                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 5px;padding: 0px;padding-top: 10px;padding-bottom: 10px;" id="more{{ $publi->id }}">
                                 @if($publi->id_user == $_SESSION['id'])
                                 <form action="{{ url('publicaciones/borrar') }}/{{$publi->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-option" style="color: red !important;"><i class="fal fa-trash"></i> Borrar</button>
                                 </form>
-                                <button class="btn btn-option"><i class="fal fa-edit"></i> Editar</button>
+                                <button class="btn btn-option" data-toggle="modal" data-target="#edit_publicacion{{ $publi->id }}"><i class="fal fa-edit"></i> Editar</button>
                                 
                                 @endif
                                 @if($publi->id_user !== $_SESSION['id'])
@@ -84,7 +112,7 @@
             </div>
             
         </div>
-        <hr style="width: 100% !important;margin-right: 10px;margin-left: 10px">
+        <hr>
         <?php
         if(!empty($publi->id_publi_original)){
             $refast_user = \App\Usuario
@@ -118,7 +146,7 @@
             if($tipo == "gif" || $tipo == "GIF") {
                 
                 ?>
-                <img src="/subidos/{{ $publi->adjunto }}" alt="FOTO" style="width: 100%;border-radius: 20px;"><br>
+                <img src="/subidos/{{ $publi->adjunto }}" alt="FOTO" style="width: 100%;border-radius: 20px;filter: blur(-8px);"><br>
                 <p style="font-size: 150%;font-weight: 400;color: white;text-shadow: -1px 0 black, 0 1px rgba(0,0,0,0.5), 1px 0 rgba(0,0,0,0.5), 0 -1px rgba(0,0,0,0.5);margin-top: -10% !important;margin-left: 5%;">GIF</p><br>
                 <?php
             }
@@ -137,7 +165,7 @@
             }
         }
         ?>
-        <hr style="width: 100% !important;margin-right: 10px;margin-left: 10px">
+        <hr>
 
         <div class="row" style="width: 100%;">
             <div class="col-4">
@@ -191,15 +219,15 @@
         </div>
 
         <div style="width: 100%;" class="collapse" id="com{{ $publi->id }}">
-            <hr style="width: 100% !important;margin-right: 10px;margin-left: 10px">
+            <hr>
             <form action="{{ url('/publicaciones/comentario/') }}/{{ $publi->id }}" method="POST">
             @csrf
             @method('GET')
 
-            <input type="text" name="comentario" class="input" placeholder="Escribe un comentario" autocomplete="off">
+            <input type="text" name="comentario" placeholder="Escribe un comentario" autocomplete="off" style="background: transparent;border: none;padding: 5px;width: 100%;">
 
             </form>
-
+            <hr>
             <br>
             
             @if(empty($publi_com[0]->id))
@@ -212,10 +240,10 @@
             <div style="max-height: 250px;overflow-y: auto;">
             
             <br>
-            @foreach($publi_com as $com)
+            @for( $i = 0 ; $i < $comentario ; $i++ )
             <?php
                 $com_usuario = DB::table('usuarios')
-                    ->where('id', '=', $com->usuario_id)
+                    ->where('id', '=', $publi_com[$i]->usuario_id)
                     ->get();
             ?>
             <div class="panel" style="padding: 10px;">
@@ -224,9 +252,9 @@
                 {{ $com_usuario[0]->nombre }} {{ $com_usuario[0]->apellido }}
                 </span>
                 <hr>
-                <span style="font-size: 75%;">{{ $com->comentario }}</span>
+                <span style="font-size: 75%;">{{ $publi_com[$i]->comentario }}</span>
             </div><br>
-            @endforeach
+            @endfor
             
             </div>
             @endif

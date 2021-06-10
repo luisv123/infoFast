@@ -6,6 +6,13 @@ html, body {
     color: black;
     margin: 0;
 }
+.modal {
+    background: rgba(0, 174, 255, 0.5);
+    background: blur(4px);
+}
+.modal-header {
+    padding: 20px;
+}
 .color {
     color: black;
 }
@@ -49,9 +56,27 @@ html, body {
 .btn-option {
     text-align: left;
     width: 100%;
+    transition: 0.3s;
 }
 .btn-option:hover {
     background: rgba(0,0,0,0.03);
+}
+.noti {
+    position: absolute;
+    margin-left: -5px;
+    padding: 1px 7px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+.noti-plus {
+    font-size: 75%;
+    position: absolute;
+    margin-left: -5px;
+    padding: 4px 4px;
+    border-radius: 50%;
+    background: red;
+    color: white;
 }
 
 .links > a {

@@ -45,6 +45,7 @@ Route::put('configuracion/', 'fastController@configuracion');
 Route::get('publicaciones/', 'publicacionesController@publicaciones');
 Route::post('publicaciones/crear/', 'publicacionesController@publicaciones_crear');
 Route::delete('publicaciones/borrar/{id}', 'publicacionesController@publicaciones_borrar');
+Route::put('publicaciones/editar/{id}', 'publicacionesController@publicaciones_editar');
 
 #RE-FAST
 

@@ -149,4 +149,24 @@ class publicacionesController extends Controller
             
         }
     }
+
+    public function publicaciones_editar($id) {
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            $rel = \App\Publicacion::find($id);
+            if($rel->id_user == $_SESSION['id']) {
+                $rel->contenido = Request::input('contenido');
+                $rel->save();
+
+                Request::session()->flash('mensaje', 'Publicacion editada exitosamente');
+            }
+            
+
+            return Redirect::to('/publicaciones');
+            
+        }
+    }
 }
