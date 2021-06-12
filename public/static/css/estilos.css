@@ -7,7 +7,7 @@ html, body {
     margin: 0;
 }
 .modal {
-    background: rgba(0, 174, 255, 0.5);
+    background: rgba(0, 174, 255, 0.75);
     background: blur(4px);
 }
 .modal-header {
@@ -177,7 +177,7 @@ html, body {
 
 .aparecido-left-right {
     animation-name: aparecido-l-r;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
 }
 @keyframes aparecido-l-r{
     0%   {opacity: 0%;   padding-left: 100px;}
@@ -186,7 +186,7 @@ html, body {
 
 .aparecido-bottom-top {
     animation-name: aparecido-b-t;
-    animation-duration: 4s;
+    animation-duration: 2s;
 }
 @keyframes aparecido-b-t{
     0%   {opacity: 0%;   padding-top: 100px;}
@@ -200,7 +200,7 @@ html, body {
 
 .aparecido-bottom-top2 {
     animation-name: aparecido-b-t2;
-    animation-duration: 4s;
+    animation-duration: 2s;
 }
 
 @keyframes aparecido{
@@ -257,7 +257,7 @@ html, body {
 
 .aparecido-b-t{
     animation-name: aparecido-b-t;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 .input_busqueda {
     background: rgba(0,0,0,0.25) !important;
@@ -274,7 +274,7 @@ html, body {
 }
 .aparecido{
     animation-name: aparecido;
-    animation-duration: 6s;
+    animation-duration: 3s;
 }
 
 .anim-like {
@@ -290,7 +290,7 @@ html, body {
 
 .nav {
     animation-name: navbar;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 
 .weight{

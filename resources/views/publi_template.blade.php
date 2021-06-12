@@ -32,7 +32,10 @@
                 $yo_refast = 1;
             }
         }
-
+        $guardado = \App\Guardado::
+            where('id_user', '=', $_SESSION['id'])
+            ->where('id_publi', '=', $publi->id)
+            ->get();
         ?>
     <div class="modal fade" id="edit_publicacion{{ $publi->id }}">
         <div class="modal-dialog modal-dialog-centered modal-xm">
@@ -103,7 +106,19 @@
                                 
                                 @endif
                                 @if($publi->id_user !== $_SESSION['id'])
-                                <button class="btn btn-option"><i class="fal fa-bookmark"></i> Guardar</button>
+                                    @if(empty($guardado[0]->id))
+                                    <form action="{{ url('publicaciones/guardar') }}/{{$publi->id}}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-option"><i class="fal fa-bookmark"></i> Guardar</button>
+                                    </form>
+                                    @endif
+                                    @if(!empty($guardado[0]->id))
+                                    <form action="{{ url('guardados/borrar') }}/{{$publi->id}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-option"><i class="fal fa-trash"></i> Quitar</button>
+                                    </form>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -122,9 +137,20 @@
         ?>
         <p style="text-align: justify;padding-bottom: 0px;">
             <?php
-            if($publi->contenido !== "/n") {
+            $arr = explode(' ', $publi->contenido);
+            $cont = "";
+            foreach($arr as $r) {
+                if(filter_var($r, FILTER_VALIDATE_URL)){
+                    $cont .= "es un link ".$r." ja!";
+                }else {
+                    $cont .= $r;
+                }
+                $cont .= " ";
+            }
+            
+            if($cont !== "/n") {
                 echo "<br>";
-                $arr = explode("/n", $publi->contenido);
+                $arr = explode("/n", $cont);
                 foreach ($arr as $a) {
                     echo $a. "<br>";
                 }
@@ -219,15 +245,15 @@
         </div>
 
         <div style="width: 100%;" class="collapse" id="com{{ $publi->id }}">
-            <hr>
+            
             <form action="{{ url('/publicaciones/comentario/') }}/{{ $publi->id }}" method="POST">
             @csrf
             @method('GET')
-
-            <input type="text" name="comentario" placeholder="Escribe un comentario" autocomplete="off" style="background: transparent;border: none;padding: 5px;width: 100%;">
-
-            </form>
             <hr>
+            <input type="text" name="comentario" placeholder="Escribe un comentario" autocomplete="off" style="background: transparent;border: none;padding: 5px;width: 100%;margin: none;">
+            <hr>
+            </form>
+            
             <br>
             
             @if(empty($publi_com[0]->id))

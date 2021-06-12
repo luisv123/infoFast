@@ -51,6 +51,12 @@ Route::put('publicaciones/editar/{id}', 'publicacionesController@publicaciones_e
 
 Route::post('publicaciones/refast/{id}', 'publicacionesController@publicaciones_refast');
 
+#GUARDADOS
+
+Route::get('guardados', 'publicacionesController@guardados');
+Route::post('publicaciones/guardar/{id}', 'publicacionesController@publicaciones_guardados');
+Route::delete('guardados/borrar/{id}', 'publicacionesController@guardados_borrar');
+
 #PERFIL
 
 Route::get('perfil/{id}', 'fastController@perfil');

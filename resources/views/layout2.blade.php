@@ -34,10 +34,14 @@
                 </button><br><br>
             </form>
 
-            <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
-                <i class="fal fa-bookmark" style="font-size: 150%;"></i>
-                <span style="font-size: 100%;margin-left: 10px;float: right;">GUARDADOS</span>
-            </button><br><br>
+            <form action="/guardados" method="POST">
+                @csrf
+                @method("GET")
+                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
+                    <i class="fal fa-bookmark" style="font-size: 150%;"></i>
+                    <span style="font-size: 100%;margin-left: 10px;float: right;">GUARDADOS</span>
+                </button><br><br>
+            </form>
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
             <i class="fal fa-user-friends" style="font-size: 150%;"></i>
@@ -115,7 +119,7 @@
                     @csrf
                     <div class="modal-header">
                         <span class="modal-title" style="font-size: 150%;">Crear Publicacion</span>
-                        <button type="button" class="btn close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="btn" data-dismiss="modal"><i class="fal fa-times"></i></button>
                     </div>
                     <div class="modal-body" style="padding: 0px;b">
                         <textarea name="contenido" class="form-control" placeholder="Escribe el contenido de tu publicacion" style="border: none;border-radius: 5px;min-height: 250px;max-height: 250px;background: transparent;" id="text_publi_c" oninput="changed()"></textarea>

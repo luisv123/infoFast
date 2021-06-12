@@ -33,14 +33,31 @@
         			</div>
         		</div>
 
-				<ul class="nav nav-tabs">
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Publicaciones</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Amigos</a>
-					</li>
+				<ul class="pagination justify-content-center">
+					<li class="page-item" onclick="publicaciones()"><button class="page-link">Publicaciones</button></li>
+					<li class="page-item" onclick="amigos()"><button class="page-link">Amigos</button></li>
 				</ul> 
+				<br><br>
+
+				<div class="row" id="publicaciones">
+					<div class="col-sm-0 col-md-3"></div>
+					<div class="col-sm-9 col-md-7">
+
+						{{ view('publi_template') }}
+
+						@foreach($publicaciones as $publi)
+						<?php publi($publi) ?>
+						@endforeach
+
+					</div>
+				</div>
+
+				<div id="amigos">
+					<div class="panel">
+						Odett
+					</div>
+					<br><br><br>
+				</div>
             </div>
             @endif
             @if(!isset($datos[0]->id))
@@ -54,5 +71,17 @@
     </div>
 </div>
 
+<script>
+	document.getElementById('publicaciones').style = "";
+	document.getElementById('amigos').style        = "display: none;";
 
+	function publicaciones() {
+		document.getElementById('publicaciones').style = "";
+		document.getElementById('amigos').style        = "display: none;";
+	}
+	function amigos() {
+		document.getElementById('publicaciones').style = "display: none;";
+		document.getElementById('amigos').style        = "";
+	}
+</script>
 @endsection

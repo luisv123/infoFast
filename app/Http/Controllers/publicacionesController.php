@@ -23,6 +23,58 @@ class publicacionesController extends Controller
         }
     }
 
+    public function guardados() {
+
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            $guardados = \App\Guardado::
+            where('id_user', '=', $_SESSION['id'])
+            ->orderBy('id', 'desc')
+            ->get();
+
+            return view('guardados', ['guardados' => $guardados]);
+        }
+    }
+
+    public function publicaciones_guardados($id) {
+
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            \App\Guardado::create([
+                'id_user' => $_SESSION['id'],
+                'id_publi' => $id
+            ]);
+
+            Request::session()->flash('mensaje', 'Guardado agregado exitosamente');
+
+            return Redirect::to('/guardados');
+        }
+    }
+
+    public function guardados_borrar($id) {
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            $guardados = \App\Guardado::
+              where('id_user', '=', $_SESSION['id'])
+            ->where('id_publi', '=', $id)
+            ->orderBy('id', 'desc')
+            ->delete();
+
+            Request::session()->flash('mensaje', 'Guardado quitado exitosamente');
+
+            return Redirect::to('/guardados');
+        }
+    }
+
 
     public function publicaciones_crear() {
         session_start();
@@ -158,7 +210,13 @@ class publicacionesController extends Controller
         }else {
             $rel = \App\Publicacion::find($id);
             if($rel->id_user == $_SESSION['id']) {
-                $rel->contenido = Request::input('contenido');
+                $arr = explode("
+", Request::input('contenido'));
+                $contenido = "";
+                foreach($arr as $r) {
+                    $contenido .= $r."/n";
+                }
+                $rel->contenido = $contenido;
                 $rel->save();
 
                 Request::session()->flash('mensaje', 'Publicacion editada exitosamente');

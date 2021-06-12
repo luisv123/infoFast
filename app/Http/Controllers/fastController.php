@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+
+use App\Publicacion;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -66,44 +68,52 @@ class fastController extends Controller
                 ->get();
 
                 if(!isset($val[0]->id)) {
-                    $usr = new Usuario;
-                    $usr::create([
-                        'nombre'        => Request::input('nombre'),
-                        'apellido'      => Request::input('apellido'),
-                        'edad'          => Request::input('edad'),
-                        'idioma'        => 'es',
-                        'usuario'       => Request::input('usuario'),
-                        'email'         => Request::input('email'),
-                        'pw'            => hash("sha512", Request::input('pw')),
-                        'modo'          => Request::input('modo'),
-                        'color'         => 'claro',
-                        'foto_perfil'   => 'sin_foto.png',
-                        'fondo_perfil'  => 'sin_fondo.png'
-                    ]);
-                    //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-                    var_dump($usr);
-
                     $val = Usuario
-                        ::where('usuario', '=', Request::input('usuario'))
+                        ::where('email', '=', Request::input('email'))
                         ->get();
+                    if(!isset($val[0]->id)) {
+                        $usr = new Usuario;
+                        $usr::create([
+                            'nombre'        => Request::input('nombre'),
+                            'apellido'      => Request::input('apellido'),
+                            'edad'          => Request::input('edad'),
+                            'idioma'        => 'es',
+                            'usuario'       => Request::input('usuario'),
+                            'email'         => Request::input('email'),
+                            'pw'            => hash("sha512", Request::input('pw')),
+                            'modo'          => Request::input('modo'),
+                            'color'         => 'claro',
+                            'foto_perfil'   => 'sin_foto.png',
+                            'fondo_perfil'  => 'sin_fondo.png'
+                        ]);
+                        //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+                        var_dump($usr);
 
-                    session_start();
-                    $_SESSION['id']       = $val[0]->id;
-                    $_SESSION['nombre']   = Request::input('nombre');
-                    $_SESSION['apellido'] = Request::input('apellido');
-                    $_SESSION['edad']     = Request::input('edad');
-                    $_SESSION['idioma']   = $val[0]->idioma;
-                    $_SESSION['usuario']  = Request::input('usuario');
-                    $_SESSION['email']  = Request::input('email');
-                    $_SESSION['modo']     = Request::input('modo');
-                    $_SESSION['color']    = 'claro';
-                    $_SESSION['foto']     = 'sin_foto.png';
-                    $_SESSION['fondo']    = 'sin_fondo.png';
-                    $nombre = explode(" ", $val[0]->nombre);
-                    $apellido = explode(" ", $val[0]->apellido);
-                    $_SESSION['nombre_completo'] = $nombre[0]." ".$apellido[0];
+                        $val = Usuario
+                            ::where('usuario', '=', Request::input('usuario'))
+                            ->get();
 
-                    return Redirect::to('/publicaciones');
+                        session_start();
+                        $_SESSION['id']       = $val[0]->id;
+                        $_SESSION['nombre']   = Request::input('nombre');
+                        $_SESSION['apellido'] = Request::input('apellido');
+                        $_SESSION['edad']     = Request::input('edad');
+                        $_SESSION['idioma']   = $val[0]->idioma;
+                        $_SESSION['usuario']  = Request::input('usuario');
+                        $_SESSION['email']  = Request::input('email');
+                        $_SESSION['modo']     = Request::input('modo');
+                        $_SESSION['color']    = 'claro';
+                        $_SESSION['foto']     = 'sin_foto.png';
+                        $_SESSION['fondo']    = 'sin_fondo.png';
+                        $nombre = explode(" ", $val[0]->nombre);
+                        $apellido = explode(" ", $val[0]->apellido);
+                        $_SESSION['nombre_completo'] = $nombre[0]." ".$apellido[0];
+
+                        return Redirect::to('/publicaciones');
+                    }else {
+                        Request::session()->flash('error', 'E-mail Ocupado');
+                        return Redirect::to('/registro');
+                    }
                 }else {
                     Request::session()->flash('error', 'Usuario Ocupado');
                     return Redirect::to('/registro');
@@ -126,9 +136,14 @@ class fastController extends Controller
         }else {
             $datos = Usuario
                 ::where('id', '=', $id)
+                ->orderBy('id', 'desc')
                 ->get();
 
-            return view('perfil', ['datos' => $datos]);
+            $publicaciones = Publicacion
+                ::where('id_user', '=', $datos[0]->id)
+                ->get();
+
+            return view('perfil', ['datos' => $datos , 'publicaciones' => $publicaciones]);
         }
         
     }
