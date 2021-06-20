@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'infoFast - Inicio')
+@section('title', 'infoFast - Comparte ideas y opiniones con gente de todo el mundo')
 @section('contenido')
 <style>
     body {

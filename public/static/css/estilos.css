@@ -1,13 +1,13 @@
 html, body {
     font-family: 'Nunito', sans-serif;
     font-weight: 200 !important;
-    background :#f4f4f7;
+    background :#f2f2f5;
     /*height: 100vh;*/
     color: black;
     margin: 0;
 }
 .modal {
-    background: rgba(0, 174, 255, 0.75);
+    background: rgba(0, 187, 255, 0.781);
     background: blur(4px);
 }
 .modal-header {
@@ -95,8 +95,9 @@ html, body {
 .panel {
     background: white;
     padding: 25px;
-    border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 .link {
     text-decoration: none;
@@ -121,14 +122,11 @@ html, body {
     cursor: pointer;
 }
 
-.navbar-left {
-    background: white;
-}
 
 .input {
     margin-bottom: 25px;
     border: 1px solid rgba(0,0,0,0.2);
-    padding: 7px;
+    padding: 14px;
     border-radius: 6px;
     width: 100%;
     color: rgba(0,0,0,0.8);
@@ -147,17 +145,7 @@ html, body {
     background-image: linear-gradient(to right, #0730a1, #2dbdff);
     color: white;
 }
-.btn-form {
-    color: white;
-    background-image: linear-gradient(to right, #0730a1, #2dbdff);
-    border-radius: 10px;
-    transition: 1s;
-}
-.btn-form:hover {
-    border-radius: 59px;
-    color: white;
-    transform: scale(1.03);
-}
+
 .btn-navbar {
     color: rgba(255,255,255,0.5);
     
@@ -251,8 +239,53 @@ html, body {
     transition: 0.25s;
 }
 
+#panel-info::after {
+    border: none;
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 85%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
 .recize:hover {
     transform: scale(1.1);
+}
+.btn-form {
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+
+}
+.btn-form:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce;
+}
+.btn-left {
+    width: 100%;
+    text-align: left;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+}
+.btn-left:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce;
 }
 
 .aparecido-b-t{
@@ -307,5 +340,11 @@ html, body {
 .nav-left {
     background: white;
     height: 100vh;
-    border-right: 1px solid rgba(0,0,0,0.25);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    width: 22%;
+    float: right !important;
+    margin-right: 78%;
+    padding: 10px;
 }

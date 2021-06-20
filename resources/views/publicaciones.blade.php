@@ -30,21 +30,22 @@
             @endif
             <div class="aparecido">
                 <div style="width: 80%;margin-left: 20%;">
-            	
+
                     {{ view('publi_template') }}
 
                     @foreach($publicaciones as $publi)
                     <?php publi($publi) ?>
                     @endforeach
+                
 
-                </div><br><br><br>
-                <div style="width: 80%;margin-left: 20%;">
-            <center>
-                <span style="font-size: 200%;">No hay mas Publicaciones</span><br><br>
-                <span>En este momento no hay publicaciones.<br>Espera a que alguien publique algo</span><br>
-            </center>
-            <div style="width: 80%;margin-left: 20%;">
-        
+                        </div><br><br><br>
+                        <div style="width: 80%;margin-left: 20%;">
+                    <center>
+                        <span style="font-size: 200%;">No hay mas Publicaciones</span><br><br>
+                        <span>En este momento no hay publicaciones.<br>Espera a que alguien publique algo</span><br>
+                    </center>
+                </div>
+            </div>
         </div>
         <div class="col-sm-0 col-md-2"></div>
     </div>

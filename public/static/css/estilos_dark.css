@@ -10,6 +10,17 @@ html, body {
     color: white !important;
 }
 
+.modal {
+    background: rgba(0, 187, 255, 0.781);
+    background: blur(4px);
+}
+.modal-header {
+    padding: 20px;
+}
+.color {
+    color: white;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -45,6 +56,7 @@ html, body {
     font-size: 150%;
     color: #16182a;
 }
+
 .btn-option {
     text-align: left;
     width: 100%;
@@ -85,13 +97,11 @@ html, body {
     margin-bottom: 30px;
 }
 .panel {
-    background: rgb(26, 26, 26);
+    background: #1a1a1a;
     padding: 25px;
-    border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.2);
-}
-.modal-content {
-    background: rgb(26, 26, 26);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 .link {
     text-decoration: none;
@@ -120,7 +130,7 @@ html, body {
 .input {
     margin-bottom: 25px;
     border: 1px solid rgba(0,0,0,0.2);
-    padding: 7px;
+    padding: 14px;
     border-radius: 6px;
     width: 100%;
     color: rgba(0,0,0,0.8);
@@ -139,17 +149,7 @@ html, body {
     background-image: linear-gradient(to right, #0730a1, #2dbdff);
     color: white;
 }
-.btn-form {
-    color: white;
-    background-image: linear-gradient(to right, #0730a1, #2dbdff);
-    border-radius: 10px;
-    transition: 1s;
-}
-.btn-form:hover {
-    border-radius: 59px;
-    color: white;
-    transform: scale(1.06);
-}
+
 .btn-navbar {
     color: rgba(255,255,255,0.5);
     
@@ -242,9 +242,47 @@ html, body {
     transform: scale(1);
     transition: 0.25s;
 }
+#panel-info {
+    color: white !important;
+}
+hr {
+    background: rgba(255, 255, 255, 0.25);
+}
+input {
+    color: white;
+}
+
+#panel-info::after {
+    border: none;
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 85%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #1a1a1a transparent;
+}
 
 .recize:hover {
     transform: scale(1.1);
+}
+.btn-form {
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+
+}
+.btn-form:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce !important;
 }
 
 .aparecido-b-t{
@@ -282,7 +320,7 @@ html, body {
 
 .nav {
     animation-name: navbar;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 
 .weight{
@@ -297,7 +335,12 @@ html, body {
 }
 
 .nav-left {
-    background: rgb(26, 26, 26);
+    background: #1a1a1a;
     height: 100vh;
-    border-right: 1px solid rgba(0,0,0,0.25);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    width: 22%;
+    float: right !important;
+    margin-right: 78%;
+    padding: 10px;
 }

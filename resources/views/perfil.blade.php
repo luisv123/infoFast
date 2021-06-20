@@ -16,7 +16,19 @@
 					<img src="/foto/sin_foto.png" alt="FOTO_PERFIL" style="border-radius: 999px;width: 18%;margin-top: -10%;margin-left: 5%;border: 1.5px solid rgba(0,0,0,0.25);">
 					<span style="font-size: 250%;">{{ $datos[0]->nombre }} {{ $datos[0]->apellido }}</span>
 					@if($datos[0]->id == $_SESSION['id'])
-					<button style="font-size: 150%;margin-left: 23%;" class="btn btn-form">Editar Perfil</button>
+					<br><br><button style="font-size: 150%;" class="btn btn-form col-4">Editar Perfil</button>
+					@endif
+				</form>
+				<form action="/seguir/{{ $datos[0]->id }}" method="POST">
+					@if($datos[0]->id !== $_SESSION['id'])
+						@if(!empty($siguiendo[0]->id))
+							@csrf
+							<br><br><button style="font-size: 150%;" class="btn btn-form bg-degraded col-4">SIGUIENDO <i class="fal fa-minus"></i></button>
+						@endif
+						@if(empty($siguiendo[0]->id))
+							@csrf
+							<br><br><button style="font-size: 150%;" class="btn btn-form col-4">SEGUIR <i class="fal fa-plus"></i></button>
+						@endif
 					@endif
 				</form>
         		<br><br><br>
@@ -24,7 +36,7 @@
         			<div class="col-6" style="text-align: right;">
         				<p>Nombre de Cuenta</p>
         				<p>Edad</p>
-						<p>Amigos</p>
+						<p>Seguidores</p>
         			</div>
         			<div class="col-6">
         				<p style="color: #2684f0;"><span>@</span>{{ $datos[0]->usuario }}</p>
@@ -33,32 +45,32 @@
         			</div>
         		</div>
 
-				<ul class="pagination justify-content-center">
-					<li class="page-item" onclick="publicaciones()"><button class="page-link">Publicaciones</button></li>
-					<li class="page-item" onclick="amigos()"><button class="page-link">Amigos</button></li>
-				</ul> 
-				<br><br>
+				<ul class="nav nav-tabs nav-justified">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#publi">Publicaciones</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#seguidores">Seguidores</a>
+					</li>
+				</ul>
 
-				<div class="row" id="publicaciones">
-					<div class="col-sm-0 col-md-3"></div>
-					<div class="col-sm-9 col-md-7">
-
-						{{ view('publi_template') }}
-
-						@foreach($publicaciones as $publi)
-						<?php publi($publi) ?>
-						@endforeach
-
+				<div class="tab-content">
+					<div class="tab-pane container active" id="publi">
+						<div class="row">
+							<br><br><br><br>
+							{{ view('publi_template') }}
+		
+							@foreach($publicaciones as $publi)
+							<?php publi($publi) ?>
+							@endforeach
+						</div>
+					</div>
+					<div class="tab-pane container fade" id="seguidores">
+						<div class="row">
+							No tienes seguidores
+						</div>
 					</div>
 				</div>
-
-				<div id="amigos">
-					<div class="panel">
-						Odett
-					</div>
-					<br><br><br>
-				</div>
-            </div>
             @endif
             @if(!isset($datos[0]->id))
 
