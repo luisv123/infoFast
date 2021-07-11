@@ -12,8 +12,8 @@
             <div>
 				<form action="{{ url('configuracion/') }}" method="POST">
 					@method('GET')
-					<img src="/fondo/sin_fondo.png" alt="FONDO DE PERFIL" style="width: 100%;max-height: 825px;border-radius: 10px;">
-					<img src="/foto/sin_foto.png" alt="FOTO_PERFIL" style="border-radius: 999px;width: 18%;margin-top: -10%;margin-left: 5%;border: 1.5px solid rgba(0,0,0,0.25);">
+					<img src="/fondo/{{  $datos[0]->fondo_perfil }}" alt="FONDO DE PERFIL" style="width: 100%;height: 300px !important;border-radius: 10px;">
+					<img src="/foto/{{  $datos[0]->foto_perfil }}" alt="FOTO_PERFIL" style="border-radius: 999px;width: 18%;margin-top: -10%;margin-left: 5%;border: 1.5px solid rgba(0,0,0,0.25);">
 					<span style="font-size: 250%;">{{ $datos[0]->nombre }} {{ $datos[0]->apellido }}</span>
 					@if($datos[0]->id == $_SESSION['id'])
 					<button style="font-size: 150%;margin-left: 23%;" class="btn btn-form">Editar Perfil</button>

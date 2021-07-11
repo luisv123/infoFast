@@ -28,7 +28,7 @@
             <form action="{{ url('/perfil/') }}/{{ $_SESSION['id'] }}" method="POST">
                 @csrf
                 @method("GET")
-                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
+                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding: 15px;">
                     <i class="fal fa-user-circle" style="font-size: 150%;"></i>
                     <span style="font-size: 100%;margin-left: 10px;float: right;">{{ strtoupper($_SESSION['nombre_completo']) }}</span>
                 </button><br><br>
@@ -37,19 +37,19 @@
             <form action="/guardados" method="POST">
                 @csrf
                 @method("GET")
-                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
+                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding: 15px;">
                     <i class="fal fa-bookmark" style="font-size: 150%;"></i>
                     <span style="font-size: 100%;margin-left: 10px;float: right;">GUARDADOS</span>
                 </button><br><br>
             </form>
 
-            <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
+            <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding: 15px;">
             <i class="fal fa-user-friends" style="font-size: 150%;"></i>
                 <span style="font-size: 100%;margin-left: 10px;float: right;">AMIGOS</span>
             </button><br><br>
             <form action="{{ url('/salir') }}" method="POST">
                 @csrf
-                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding-left: 20px;">
+                <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding: 15px;">
                     <i class="fal fa-sign-out fa-flip-horizontal" style="font-size: 150%;"></i>
                     <span style="font-size: 100%;margin-left: 10px;float: right;">SALIR</span>
                 </button><br><br>
@@ -85,7 +85,7 @@
                 <button style="color: white;" class="nav-link btn link-navbar" data-toggle="modal" data-target="#cpublicacion">CREAR PUBLICACION <i class="fal fa-plus"></i></button>
             </li>
             <li class="nav-item">
-                <button style="color: white;" class="nav-link btn link-navbar">
+                <button style="color: white;" class="nav-link btn link-navbar" data-toggle="collapse" data-target="#notificaciones">
                     <i class="fal fa-bell" style="font-size: 150%;"></i>
                     <span class="noti-plus">9+</span>
                 </button>
@@ -93,6 +93,7 @@
             <li class="nav-item" id="btn_info_show">
                 <button data-toggle="collapse" data-target="#panel-info" style="color: white;" class="nav-link btn link-navbar"><img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;max-width: 25px;"></button>
             </li>
+
             <div class="col-sm-11 col-md-3 justify-content-end" style="position: absolute;margin-top: 350px !important;float: right !important;">
                 <div class="panel collapse" id="panel-info" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 5px 20px 20px;">
                     <center>
@@ -108,6 +109,21 @@
                     </form>
                 </div>
             </div>
+
+            <div class="col-sm-11 col-md-3 justify-content-end" style="position: absolute;margin-top: 350px !important;float: right !important;margin-right: 70px;">
+                <div class="panel collapse" id="notificaciones" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 5px 20px 20px;">
+                    <span style="font-size: 175%;">Notificaciones</span><br>
+                    <hr><br>
+                    <div style="min-height: 150px;max-height: 150px;overflow-y: auto;">
+                        @for( $i = 0 ; $i < 25 ; $i++ )
+                        <div style="border-radius: 15px;border: 1px solid gray;padding: 15px;">
+                            Hola
+                        </div><br>
+                        @endfor
+                    </div>
+                </div>
+            </div>
+
         </div>
         
     </nav>

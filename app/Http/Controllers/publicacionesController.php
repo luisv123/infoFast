@@ -12,6 +12,7 @@ class publicacionesController extends Controller
     public function publicaciones() {
         $publicaciones = \App\Publicacion::
             orderBy('id', 'desc')
+            ->limit(100)
             ->get();
 
         session_start();

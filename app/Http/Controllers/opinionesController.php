@@ -33,7 +33,7 @@ class opinionesController extends Controller
 
                     Request::session()->flash('mensaje', 'Me gusta agregado exitosamente');
 
-                    return Redirect::to('/publicaciones');
+                    return Redirect::to('/publicaciones#'.$id);
                 }else {
                     \App\Like
                     ::where('id', '=', $aux[0]->id)
@@ -41,7 +41,7 @@ class opinionesController extends Controller
 
                     Request::session()->flash('mensaje', 'Me gusta eliminado exitosamente');
 
-                    return Redirect::to('/publicaciones');
+                    return Redirect::to('/publicaciones#'.$id);
                 }
             }
         }
@@ -62,7 +62,7 @@ class opinionesController extends Controller
 
                     Request::session()->flash('mensaje', 'Comentario agregado exitosamente');
 
-                    return Redirect::to('/publicaciones');
+                    return Redirect::to('/publicaciones#'.$id);
             }
         }
     }

@@ -147,7 +147,7 @@ class fastController extends Controller
         }
         
     }
-
+    
     public function buscar() {
         session_start();
 
@@ -224,6 +224,50 @@ class fastController extends Controller
 
                 echo Request::input('nombre');
             }
+            if(Request::hasFile('foto')){
+                    
+                $file = Request::file('foto');
+
+                $nombre = $_SESSION['id'];
+                $tipo1 = explode(".", $file->getClientOriginalName());
+                $tipo = end($tipo1);
+                if($tipo == "png" || $tipo == "PNG" || 
+                   $tipo == "jpg" || $tipo == "JPG" || 
+                   $tipo == "jpeg" || $tipo == "JPEG" || 
+                   $tipo == "gif" || $tipo == "GIF"){
+                    
+                    $name = $nombre.".".$tipo;
+                    //move_uploaded_file($_FILES['multimedia']['tmp_name'], '/home/lv/LaravelProjects/infofast/public/subidos/'.$file);
+                    $file->move(public_path().'/foto/',$name);
+                    $_SESSION['foto'] = $name;
+
+                    $user = \App\Usuario::find($_SESSION['id']);
+                    $user->foto_perfil = $name;
+                    $user->save();
+                }
+            }
+            if(Request::hasFile('fondo')){
+                    
+                $file = Request::file('fondo');
+
+                $nombre = $_SESSION['id'];
+                $tipo1 = explode(".", $file->getClientOriginalName());
+                $tipo = end($tipo1);
+                if($tipo == "png" || $tipo == "PNG" || 
+                   $tipo == "jpg" || $tipo == "JPG" || 
+                   $tipo == "jpeg" || $tipo == "JPEG" || 
+                   $tipo == "gif" || $tipo == "GIF"){
+                    
+                    $name = $nombre.".".$tipo;
+                    //move_uploaded_file($_FILES['multimedia']['tmp_name'], '/home/lv/LaravelProjects/infofast/public/subidos/'.$file);
+                    $file->move(public_path().'/fondo/',$name);
+                    $_SESSION['fondo'] = $name;
+
+                    $user = \App\Usuario::find($_SESSION['id']);
+                    $user->fondo_perfil = $name;
+                    $user->save();
+                }
+            }
             if(Request::input('color') !== $_SESSION['color']) {
                 $user = Usuario::find($_SESSION['id']);
 
@@ -231,6 +275,7 @@ class fastController extends Controller
                 $user->save();
                 $_SESSION['color'] = Request::input('color');
             }
+
             return Redirect::to('/publicaciones');
         }
     }
