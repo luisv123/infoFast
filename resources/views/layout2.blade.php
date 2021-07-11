@@ -22,9 +22,9 @@
 </head>
 <body>
     
-    <div class="fixed-top nav-left navbar-left" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);width: 22%;float: right !important;margin-right: 78%;padding: 10px;">
+    <div class="fixed-top nav-left">
         <br><br><br><br>
-        <div class="aparecido-b-t">
+        <div class="aparecido">
             <form action="{{ url('/perfil/') }}/{{ $_SESSION['id'] }}" method="POST">
                 @csrf
                 @method("GET")
@@ -45,7 +45,7 @@
 
             <button class="btn bg-degraded btn-form" style="color: white;width: 100%;text-align: left;padding: 15px;">
             <i class="fal fa-user-friends" style="font-size: 150%;"></i>
-                <span style="font-size: 100%;margin-left: 10px;float: right;">AMIGOS</span>
+                <span style="font-size: 100%;margin-left: 10px;float: right;">SEGUIDORES</span>
             </button><br><br>
             <form action="{{ url('/salir') }}" method="POST">
                 @csrf
@@ -95,18 +95,38 @@
             </li>
 
             <div class="col-sm-11 col-md-3 justify-content-end" style="position: absolute;margin-top: 350px !important;float: right !important;">
-                <div class="panel collapse" id="panel-info" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 20px 5px 20px 20px;">
+                <div class="panel collapse" id="panel-info">
                     <center>
                         <img src="/foto/{{ $_SESSION['foto'] }}" alt="perfil" style="border-radius: 999px;width: 25%;border: 1px solid rgba(0,0,0,0.125);"><br><br>
                         <span style="font-size: 150%;" class="color">{{ $_SESSION['nombre_completo'] }}</span><br>
-                        <hr>
                     </center>
-                    <form action="{{ url('/configuracion') }}" method="POST">
-                        @method('GET')
-                        <button class="btn bg-degraded" style="width: 100%;color: white;">
-                            <i class="fal fa-cog fa-spin"></i> Configuracion    
-                        </button>
-                    </form>
+                    <div class="row">
+                        <div class="col-4">
+                            <form action="{{ url('/configuracion') }}" method="POST">
+                                @method('GET')
+                                <button class="btn btn-form">
+                                    <i class="fal fa-cog fa-spin"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-4">
+                            <form  action="{{ url('/perfil/') }}/{{ $_SESSION['id'] }}" method="POST">
+                                @csrf
+                                @method('GET')
+                                <button class="btn btn-form">
+                                    <i class="fal fa-user"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-4">
+                            <form action="{{ url('/salir') }}" method="POST">
+                                @csrf
+                                <button class="btn btn-form">
+                                    <i class="fal fa-sign-out"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -154,10 +174,11 @@
 
 @yield('contenido')
     <script>
-        document.getElementById('btn_publi_c').disabled = true;
-        document.getElementById('btn_publi_c').style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
-        document.getElementById('btn_publi_c').className = "btn bg-degraded disabled";
-        document.getElementById('btn_publi_c').title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
+        var btn = document.getElementById('btn_publi_c');
+        btn.disabled = true;
+        btn.style = "opacity: 50%";
+        btn.className = "btn btn-form";
+        btn.title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
 
         function changed() {
             var text = document.getElementById('text_publi_c');
@@ -166,14 +187,14 @@
             var btn = document.getElementById('btn_publi_c');
             if (text.value == "" && multi.value == "") {
                 btn.disabled = true;
-                btn.style = "opacity: 50%;width: 100%;border-radius: 10px;color: white;";
-                btn.className = "btn bg-degraded disabled";
+                btn.style = "opacity: 50%";
+                btn.className = "btn btn-form";
                 btn.title = "No puedes publicar algo por que el campo de texto esta vacio y no hay multimedia subida";
             }else {
 
                 btn.disabled = false;
                 btn.style = "opacity: 100%;width: 100%;";
-                btn.className = "btn btn-form bg-degraded";
+                btn.className = "btn btn-form";
                 btn.title = "";
             }
             if(multi.value == "") {

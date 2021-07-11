@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class publicacionesController extends Controller
 {
+    
     public function publicaciones() {
         $publicaciones = \App\Publicacion::
             orderBy('id', 'desc')
@@ -20,6 +21,25 @@ class publicacionesController extends Controller
             session_destroy();
             return Redirect::to('/');
         }else {
+            $seguidores = \App\Seguidor::
+                where('enviador', '=', $_SESSION['id'])
+                ->get();
+            if(!empty($seguidores[0]->id)) {
+                $aux = [];
+                foreach($seguidores as $segui) {
+                    array_push($aux, $segui->receptor);
+                }
+
+                $publicaciones = \App\Publicacion::
+                    where('id_user', '=', $aux)
+                    ->limit(100)
+                    ->get();
+            }else {
+                $publicaciones = \App\Publicacion::
+                    where('id_user', '!=', $_SESSION['id'])
+                    ->limit(100)
+                    ->get();
+            }
             return view('publicaciones', ['publicaciones' => $publicaciones]);
         }
     }

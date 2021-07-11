@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function() {
 	return view('inicio');
 });
-
 #REGISTRO
 
 Route::get('registro/', function() {
@@ -64,6 +63,10 @@ Route::get('perfil/{id}', 'fastController@perfil');
 #BUSQUEDA
 
 Route::post('/busqueda/', 'fastController@buscar');
+
+#SEGUIDORES
+
+Route::post('/seguir/{id}', 'fastController@seguir');
 
 #ME GUSTA
 

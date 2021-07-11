@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 
-use App\Publicacion;
+
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Usuario;
+use App\Publicacion;
+use App\Seguidor;
 class fastController extends Controller
 {
 
@@ -143,7 +145,12 @@ class fastController extends Controller
                 ::where('id_user', '=', $datos[0]->id)
                 ->get();
 
-            return view('perfil', ['datos' => $datos , 'publicaciones' => $publicaciones]);
+            $siguiendo = Seguidor
+                ::where('enviador', '=', $_SESSION['id'])
+                ->where('receptor', '=', $datos[0]->id)
+                ->get();
+
+            return view('perfil', ['datos' => $datos , 'publicaciones' => $publicaciones , 'siguiendo' => $siguiendo]);
         }
         
     }
@@ -278,6 +285,35 @@ class fastController extends Controller
 
             return Redirect::to('/publicaciones');
         }
+    }
+
+    public function seguir($id) {
+        session_start();
+        if(!isset($_SESSION['id'])){
+            session_destroy();
+            return Redirect::to('/');
+        }else {
+            $val = Usuario::find($id);
+            if(!empty($val->id)) {
+                $val = Seguidor::
+                  where('enviador', '=', $_SESSION['id'])
+                ->where('receptor', '=', $id)
+                ->get();
+                if(!empty($val[0]->id)) {
+                    Seguidor::
+                      where('enviador', '=', $_SESSION['id'])
+                    ->where('receptor', '=', $id)
+                    ->delete();
+                }else {
+                    Seguidor::create([
+                        'enviador' => $_SESSION['id'],
+                        'receptor' => $id
+                    ]);
+                }
+                    
+            }
+        }
+        return Redirect::to('/perfil/'. $id);
     }
 
     public function salir() {

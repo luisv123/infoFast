@@ -10,6 +10,17 @@ html, body {
     color: white !important;
 }
 
+.modal {
+    background: rgba(0, 187, 255, 0.781);
+    background: blur(4px);
+}
+.modal-header {
+    padding: 20px;
+}
+.color {
+    color: white;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -45,6 +56,7 @@ html, body {
     font-size: 150%;
     color: #16182a;
 }
+
 .btn-option {
     text-align: left;
     width: 100%;
@@ -85,7 +97,7 @@ html, body {
     margin-bottom: 30px;
 }
 .panel {
-    background: rgb(26, 26, 26);
+    background: #1a1a1a;
     padding: 25px;
     border-radius: 5px;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
@@ -245,9 +257,47 @@ html, body {
     transform: scale(1);
     transition: 0.25s;
 }
+#panel-info {
+    color: white !important;
+}
+hr {
+    background: rgba(255, 255, 255, 0.25);
+}
+input {
+    color: white;
+}
+
+#panel-info::after {
+    border: none;
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 85%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #1a1a1a transparent;
+}
 
 .recize:hover {
     transform: scale(1.1);
+}
+.btn-form {
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+
+}
+.btn-form:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce !important;
 }
 
 .aparecido-b-t{
@@ -285,7 +335,7 @@ html, body {
 
 .nav {
     animation-name: navbar;
-    animation-duration: 3s;
+    animation-duration: 1.5s;
 }
 
 .weight{
@@ -300,7 +350,7 @@ html, body {
 }
 
 .nav-left {
-    background: rgb(26, 26, 26);
+    background: #1a1a1a;
     height: 100vh;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
     width: 95px;

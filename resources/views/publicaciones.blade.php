@@ -31,12 +31,13 @@
             <div class="aparecido" id="contenedor">
 
                 <div style="width: 80%;margin-left: 20%;">
-            	
+
                     {{ view('publi_template') }}
 
                     @foreach($publicaciones as $publi)
                     <?php publi($publi) ?>
                     @endforeach
+                
 
                     <br><br><br>
                     <center>

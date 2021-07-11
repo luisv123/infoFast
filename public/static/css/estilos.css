@@ -1,13 +1,13 @@
 html, body {
     font-family: 'Nunito', sans-serif;
     font-weight: 200 !important;
-    background :#f4f4f7;
+    background :#f2f2f5;
     /*height: 100vh;*/
     color: black;
     margin: 0;
 }
 .modal {
-    background: rgba(0, 174, 255, 0.75);
+    background: rgba(0, 187, 255, 0.781);
     background: blur(4px);
 }
 .modal-header {
@@ -121,10 +121,6 @@ html, body {
 
 .pointer-hover:hover {
     cursor: pointer;
-}
-
-.navbar-left {
-    background: white;
 }
 
 .input {
@@ -254,8 +250,53 @@ html, body {
     transition: 0.25s;
 }
 
+#panel-info::after {
+    border: none;
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 85%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
 .recize:hover {
     transform: scale(1.1);
+}
+.btn-form {
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+
+}
+.btn-form:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce;
+}
+.btn-left {
+    width: 100%;
+    text-align: left;
+    border-radius: 7px;
+    padding-left: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.041);
+    color: #212529;
+    border-bottom: 4px solid transparent;
+    transition: 0.25s;
+}
+.btn-left:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid #1974ce;
+    color: #1974ce;
 }
 
 .aparecido-b-t{

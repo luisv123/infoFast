@@ -95,7 +95,7 @@
                     <div class="row">
                         <div class="col-sm-1 col-md-6"></div>
                         <div class="col-sm-11 col-md-6">
-                            <div class="panel collapse" style="box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);border-radius: 5px;padding: 0px;padding-top: 10px;padding-bottom: 10px;" id="more{{ $publi->id }}">
+                            <div class="panel collapse" style="border-radius: 5px;padding: 0px;padding-top: 10px;padding-bottom: 10px;" id="more{{ $publi->id }}">
                                 @if($publi->id_user == $_SESSION['id'])
                                 <form action="{{ url('publicaciones/borrar') }}/{{$publi->id}}" method="POST">
                                     @csrf
